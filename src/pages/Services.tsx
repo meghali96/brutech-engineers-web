@@ -1,0 +1,197 @@
+import Layout from '@/components/layout/Layout';
+import PageBanner from '@/components/layout/PageBanner';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Wrench, Container, Wind, Settings, Droplets, Truck, Check, ArrowRight } from 'lucide-react';
+import hero2 from '@/assets/hero-2.jpg';
+import about1 from '@/assets/about-1.jpg';
+import about2 from '@/assets/about-2.jpg';
+import about3 from '@/assets/about-3.jpg';
+import about4 from '@/assets/about-4.jpg';
+import about5 from '@/assets/about-5.jpg';
+import about6 from '@/assets/about-6.jpg';
+
+const services = [
+  {
+    id: 'assembly',
+    icon: Wrench,
+    title: 'Assembly Solutions',
+    description: 'Expert assembly services ensuring precision and durability',
+    image: about1,
+    features: [
+      'High-precision assembly equipment',
+      'Automated assembly lines',
+      'Quality control integration',
+      'Custom assembly solutions',
+      'Ergonomic workstation design',
+    ],
+  },
+  {
+    id: 'lifting',
+    icon: Container,
+    title: 'Industry Lifting',
+    description: 'Heavy-duty lifting solutions for industrial and commercial sectors',
+    image: about5,
+    features: [
+      'Overhead cranes and hoists',
+      'Chain hoists and trolleys',
+      'Lifting accessories and attachments',
+      'Load testing and certification',
+      'Installation and commissioning',
+    ],
+  },
+  {
+    id: 'pneumatic',
+    icon: Wind,
+    title: 'Pneumatic Lifting',
+    description: 'Air-powered lifting solutions for efficient and smooth operations',
+    image: about2,
+    features: [
+      'Pneumatic hoists and balancers',
+      'Air-powered manipulators',
+      'Vacuum lifting systems',
+      'Compressed air solutions',
+      'Energy-efficient designs',
+    ],
+  },
+  {
+    id: 'repair',
+    icon: Settings,
+    title: 'Repairing Services',
+    description: 'Comprehensive repair services for machinery and lifting systems',
+    image: about4,
+    features: [
+      'Preventive maintenance programs',
+      'Emergency repair services',
+      'Spare parts replacement',
+      'Calibration and testing',
+      'On-site and off-site repairs',
+    ],
+  },
+  {
+    id: 'hydraulic',
+    icon: Droplets,
+    title: 'Hydraulic Lifting',
+    description: 'Powerful hydraulic lifting solutions for high-capacity operations',
+    image: about3,
+    features: [
+      'Hydraulic jacks and cylinders',
+      'Hydraulic power packs',
+      'Custom hydraulic systems',
+      'High-tonnage lifting solutions',
+      'Precision hydraulic controls',
+    ],
+  },
+  {
+    id: 'material',
+    icon: Truck,
+    title: 'Customized Material Handling',
+    description: 'Tailored material handling solutions to streamline logistics',
+    image: about6,
+    features: [
+      'Conveyor systems',
+      'Automated guided vehicles',
+      'Palletizers and depalletizers',
+      'Custom handling equipment',
+      'Warehouse optimization',
+    ],
+  },
+];
+
+const ServicesPage = () => {
+  return (
+    <Layout>
+      <PageBanner
+        title="Services"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Services' },
+        ]}
+        backgroundImage={hero2}
+      />
+
+      {/* Intro */}
+      <section className="section-padding bg-background">
+        <div className="container-custom text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Our <span className="text-primary">Industrial Solutions</span>
+          </h2>
+          <p className="text-muted-foreground">
+            Discover our wide range of industrial solutions designed to lift, assemble, repair, and handle your materials with precision and efficiency.
+          </p>
+        </div>
+      </section>
+
+      {/* Services */}
+      {services.map((service, index) => (
+        <section
+          key={service.id}
+          id={service.id}
+          className={`section-padding ${index % 2 === 0 ? 'bg-muted' : 'bg-background'}`}
+        >
+          <div className="container-custom">
+            <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              {/* Image */}
+              <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                <div className="img-zoom rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-[400px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className="service-icon">
+                  <service.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/contact">
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
+                    Request Quote
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA Section */}
+      <section className="section-padding bg-foreground">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-background mb-6">
+            Need a Custom Solution?
+          </h2>
+          <p className="text-background/70 mb-8 max-w-2xl mx-auto">
+            We specialize in configuring and tailoring solutions to our customers' needs. Contact us to discuss your specific requirements.
+          </p>
+          <Link to="/contact">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+              Get in Touch
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default ServicesPage;
