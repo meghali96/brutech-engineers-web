@@ -1,0 +1,159 @@
+import Layout from '@/components/layout/Layout';
+import PageBanner from '@/components/layout/PageBanner';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Factory, Car, Building2, Zap, Fuel, Plane, HardHat, UtensilsCrossed } from 'lucide-react';
+import about3 from '@/assets/about-3.jpg';
+
+const brands = [
+  'Ingersoll Rand',
+  'Dewalt',
+  'Stanley Black & Decker',
+  'VAC Pneumatics',
+  'Ace Pneumatics',
+  'Tohnichi',
+  'Uryu',
+];
+
+const industries = [
+  { icon: Factory, name: 'Manufacturing' },
+  { icon: Car, name: 'Automotive' },
+  { icon: Building2, name: 'Construction' },
+  { icon: Zap, name: 'Energy & Power' },
+  { icon: Fuel, name: 'Oil & Gas' },
+  { icon: Plane, name: 'Aerospace' },
+  { icon: HardHat, name: 'Mining' },
+  { icon: UtensilsCrossed, name: 'Food Processing' },
+];
+
+const stats = [
+  { value: '25+', label: 'Industries Served' },
+  { value: '100+', label: 'Satisfied Clients' },
+  { value: '10,000+', label: 'Parts Delivered' },
+];
+
+const ClientsPage = () => {
+  return (
+    <Layout>
+      <PageBanner
+        title="Our Clients"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Our Clients' },
+        ]}
+        backgroundImage={about3}
+      />
+
+      {/* Intro */}
+      <section className="section-padding bg-background">
+        <div className="container-custom text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Trusted by <span className="text-primary">Leading Industries</span>
+          </h2>
+          <p className="text-muted-foreground">
+            Our components are trusted by clients across India in both heavy and light industries. We're proud to partner with some of the most recognized brands in the industrial sector.
+          </p>
+        </div>
+      </section>
+
+      {/* Brands Carousel */}
+      <section className="py-16 bg-muted overflow-hidden">
+        <div className="container-custom mb-8">
+          <h3 className="text-2xl font-bold text-foreground text-center mb-8">
+            Brand Partners
+          </h3>
+        </div>
+
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-muted to-transparent z-10" />
+
+          <div className="flex animate-marquee hover:[animation-play-state:paused]">
+            {brands.map((brand, index) => (
+              <div key={`brand-1-${index}`} className="flex-shrink-0 mx-6">
+                <div className="w-48 h-24 bg-background rounded-lg shadow-sm flex items-center justify-center px-6 border border-border hover:border-primary transition-colors grayscale-hover">
+                  <span className="font-bold text-foreground text-center text-lg">
+                    {brand}
+                  </span>
+                </div>
+              </div>
+            ))}
+            {brands.map((brand, index) => (
+              <div key={`brand-2-${index}`} className="flex-shrink-0 mx-6">
+                <div className="w-48 h-24 bg-background rounded-lg shadow-sm flex items-center justify-center px-6 border border-border hover:border-primary transition-colors grayscale-hover">
+                  <span className="font-bold text-foreground text-center text-lg">
+                    {brand}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Served */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
+            Industries <span className="text-primary">We Serve</span>
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <div
+                key={index}
+                className="bg-card rounded-xl p-6 text-center shadow-card card-hover border-2 border-transparent"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                  <industry.icon className="w-8 h-8 text-primary" />
+                </div>
+                <h4 className="font-semibold text-foreground">{industry.name}</h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 md:py-24 bg-foreground">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {stat.value}
+                </div>
+                <p className="text-background/70 text-lg">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-muted">
+        <div className="container-custom text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            Ready to Work with Us?
+          </h2>
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join the growing list of satisfied clients who trust Brutech for their industrial needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+                Get Quote
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="border-2 border-secondary text-foreground hover:bg-secondary hover:text-secondary-foreground font-semibold px-8">
+                Contact Us
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default ClientsPage;
