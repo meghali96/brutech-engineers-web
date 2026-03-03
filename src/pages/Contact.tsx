@@ -14,7 +14,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Phone',
-    content: ['+91 7702949688', '+91 8919333433'],
+    content: ['+91 7702949688', '+91 7702949690', '+91 8919333433'],
   },
   {
     icon: Mail,
