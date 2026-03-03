@@ -9,10 +9,11 @@ import heroUryu1 from '@/assets/hero-uryu-1.jpg';
 import heroUryu2 from '@/assets/hero-uryu-2.jpg';
 import heroStanley from '@/assets/hero-stanley.jpg';
 import heroDewalt1 from '@/assets/hero-dewalt-1.jpg';
-import heroDewalt2 from '@/assets/hero-dewalt-2.jpg';
 import heroIR1 from '@/assets/hero-ir-1.jpg';
 import heroIR2 from '@/assets/hero-ir-2.jpg';
 import heroIR3 from '@/assets/hero-ir-3.jpg';
+import heroIR4 from '@/assets/hero-ir-4.jpg';
+import heroIR5 from '@/assets/hero-ir-5.jpg';
 
 const slides = [
   {
@@ -32,15 +33,29 @@ const slides = [
   {
     image: heroIR2,
     heading: 'Ingersoll Rand',
-    subheading: 'Global Leadership Since 1966 — Innovation & Reliability',
+    subheading: 'Complete Industrial Solutions & Accessories',
     buttonText: 'Learn More',
     buttonLink: '/services',
   },
   {
     image: heroIR3,
     heading: 'Ingersoll Rand',
-    subheading: 'Precision Power. Engineered Future.',
+    subheading: 'Power Tools, Lifting & Material Handling',
     buttonText: 'View Solutions',
+    buttonLink: '/services',
+  },
+  {
+    image: heroIR4,
+    heading: 'Ingersoll Rand',
+    subheading: 'Global Leadership Since 1966 — Innovation & Reliability',
+    buttonText: 'Discover More',
+    buttonLink: '/services',
+  },
+  {
+    image: heroIR5,
+    heading: 'Ingersoll Rand',
+    subheading: 'Precision Power. Engineered Future.',
+    buttonText: 'View Range',
     buttonLink: '/services',
   },
   {
@@ -70,13 +85,6 @@ const slides = [
     subheading: 'Built Tough for the Toughest Jobs',
     buttonText: 'View Products',
     buttonLink: '/services',
-  },
-  {
-    image: heroDewalt2,
-    heading: 'DEWALT Professional Tools',
-    subheading: 'Industry-Leading Performance & Durability',
-    buttonText: 'Get Quote',
-    buttonLink: '/contact',
   },
   {
     image: hero2,
@@ -135,9 +143,12 @@ const HeroSlider = () => {
           }`}
         >
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
+          <img
+            src={slide.image}
+            alt={slide.heading}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
           />
           {/* Overlay */}
           <div className="absolute inset-0 bg-foreground/60" />
