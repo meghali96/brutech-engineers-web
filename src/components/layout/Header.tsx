@@ -14,14 +14,18 @@ const navItems = [
     dropdown: [
       {
         name: 'Ingersoll Rand',
-        submenu: ['Power Tools', 'Lifting & Materials', 'Air Operated Diaphragm & Piston Pumps'],
+        href: 'https://www.ingersollrand.com/en-in/',
+        submenu: [
+          { name: 'Power Tools', href: 'https://powertools.ingersollrand.com/en-gb/' },
+          { name: 'Lifting & Materials', href: 'https://liftingsolutions.ingersollrand.com/en/' },
+        ],
       },
-      { name: 'Ace Pneumatics' },
-      { name: 'Tohnichi' },
-      { name: 'Uryu' },
-      { name: 'Stanley' },
-      { name: 'Dewalt' },
-      { name: 'VAC Pneumatics' },
+      { name: 'Ace Pneumatics', href: 'https://acepneumatics.com/' },
+      { name: 'Tohnichi', href: 'https://en.global-tohnichi.com/' },
+      { name: 'Uryu', href: 'https://uryu.es/en/productos/' },
+      { name: 'Stanley', href: 'https://www.stanleyblackanddecker.com/' },
+      { name: 'Dewalt', href: 'https://www.dewalt.com/' },
+      { name: 'VAC Pneumatics', href: 'https://www.vacpneumatic.com/' },
     ],
   },
   { name: 'Our Clients', path: '/clients' },
@@ -143,25 +147,29 @@ const Header = () => {
                             <ChevronDown className="w-4 h-4 -rotate-90" />
                           </button>
                         ) : (
-                          <Link
-                            to={`/brands/${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                          <a
+                            href={subItem.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                           >
                             {subItem.name}
-                          </Link>
+                          </a>
                         )}
 
                         {/* Submenu */}
                         {subItem.submenu && activeSubmenu === subItem.name && (
                           <div className="absolute left-full top-0 w-64 bg-background rounded-lg shadow-lg border border-border py-2 ml-1">
                             {subItem.submenu.map((subSubItem) => (
-                              <Link
-                                key={subSubItem}
-                                to={`/brands/ingersoll-rand/${subSubItem.toLowerCase().replace(/\s+/g, '-')}`}
+                              <a
+                                key={subSubItem.name}
+                                href={subSubItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                               >
-                                {subSubItem}
-                              </Link>
+                                {subSubItem.name}
+                              </a>
                             ))}
                           </div>
                         )}
@@ -224,24 +232,28 @@ const Header = () => {
                                 {activeSubmenu === subItem.name && (
                                   <div className="pl-4 space-y-2 animate-fade-in">
                                     {subItem.submenu.map((subSubItem) => (
-                                      <Link
-                                        key={subSubItem}
-                                        to={`/brands/ingersoll-rand/${subSubItem.toLowerCase().replace(/\s+/g, '-')}`}
+                                      <a
+                                        key={subSubItem.name}
+                                        href={subSubItem.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="block py-2 text-sm text-muted-foreground hover:text-primary"
                                       >
-                                        {subSubItem}
-                                      </Link>
+                                        {subSubItem.name}
+                                      </a>
                                     ))}
                                   </div>
                                 )}
                               </div>
                             ) : (
-                              <Link
-                                to={`/brands/${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              <a
+                                href={subItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block py-2 text-sm text-muted-foreground hover:text-primary"
                               >
                                 {subItem.name}
-                              </Link>
+                              </a>
                             )}
                           </div>
                         ))}
