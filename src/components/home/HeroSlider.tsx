@@ -5,12 +5,76 @@ import { Button } from '@/components/ui/button';
 import hero1 from '@/assets/hero-1.jpg';
 import hero2 from '@/assets/hero-2.jpg';
 import hero3 from '@/assets/hero-3.jpg';
+import heroUryu1 from '@/assets/hero-uryu-1.jpg';
+import heroUryu2 from '@/assets/hero-uryu-2.jpg';
+import heroStanley from '@/assets/hero-stanley.jpg';
+import heroDewalt1 from '@/assets/hero-dewalt-1.jpg';
+import heroDewalt2 from '@/assets/hero-dewalt-2.jpg';
+import heroIR1 from '@/assets/hero-ir-1.jpg';
+import heroIR2 from '@/assets/hero-ir-2.jpg';
+import heroIR3 from '@/assets/hero-ir-3.jpg';
 
 const slides = [
   {
     image: hero1,
     heading: 'Suitable Solution for Your Industry',
     subheading: 'Precision Machine Parts & Lifting Solutions',
+    buttonText: 'Get Quote',
+    buttonLink: '/contact',
+  },
+  {
+    image: heroIR1,
+    heading: 'Ingersoll Rand',
+    subheading: 'Precision Power. Engineered Future.',
+    buttonText: 'Explore Products',
+    buttonLink: '/services',
+  },
+  {
+    image: heroIR2,
+    heading: 'Ingersoll Rand',
+    subheading: 'Global Leadership Since 1966 — Innovation & Reliability',
+    buttonText: 'Learn More',
+    buttonLink: '/services',
+  },
+  {
+    image: heroIR3,
+    heading: 'Ingersoll Rand',
+    subheading: 'Precision Power. Engineered Future.',
+    buttonText: 'View Solutions',
+    buttonLink: '/services',
+  },
+  {
+    image: heroUryu1,
+    heading: 'URYU - Industrial Fastening Solutions',
+    subheading: 'High-Performance Pulse Tools for Every Application',
+    buttonText: 'View Products',
+    buttonLink: '/services',
+  },
+  {
+    image: heroUryu2,
+    heading: 'URYU - Precision Torque Solutions',
+    subheading: 'Reliable Fastening Tools Built for Accuracy',
+    buttonText: 'Learn More',
+    buttonLink: '/services',
+  },
+  {
+    image: heroStanley,
+    heading: 'Stanley Black & Decker',
+    subheading: 'Professional-Grade Power Tools & Solutions',
+    buttonText: 'Explore Range',
+    buttonLink: '/services',
+  },
+  {
+    image: heroDewalt1,
+    heading: 'DEWALT Power Tools',
+    subheading: 'Built Tough for the Toughest Jobs',
+    buttonText: 'View Products',
+    buttonLink: '/services',
+  },
+  {
+    image: heroDewalt2,
+    heading: 'DEWALT Professional Tools',
+    subheading: 'Industry-Leading Performance & Durability',
     buttonText: 'Get Quote',
     buttonLink: '/contact',
   },
@@ -114,15 +178,15 @@ const HeroSlider = () => {
       </button>
 
       {/* Dot Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-3 rounded-full transition-all duration-300 ${
+            className={`h-2.5 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? 'w-8 bg-primary'
-                : 'w-3 bg-secondary/50 hover:bg-secondary'
+                ? 'w-7 bg-primary'
+                : 'w-2.5 bg-secondary/50 hover:bg-secondary'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
