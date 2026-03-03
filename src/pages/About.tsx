@@ -9,7 +9,7 @@ import about3 from '@/assets/about-3.jpg';
 import about4 from '@/assets/about-4.jpg';
 import about5 from '@/assets/about-5.jpg';
 import about6 from '@/assets/about-6.jpg';
-import hero1 from '@/assets/hero-1.jpg';
+import aboutBanner from '@/assets/about-banner.jpg';
 
 const images = [about1, about2, about3, about4, about5, about6];
 
@@ -37,7 +37,7 @@ const AboutPage = () => {
           { name: 'Home', path: '/' },
           { name: 'About Us' },
         ]}
-        backgroundImage={hero1}
+        backgroundImage={aboutBanner}
       />
 
       {/* Company Story */}

@@ -44,8 +44,11 @@ const AboutSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               About <span className="text-primary">BruTech</span> Engineers
             </h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-4 leading-relaxed">
               Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.
+            </p>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Brutech started as an assembly equipment and solution provider to Automotive OEMs. Today we serve leading automotive OEMs, their vendors and other industries including railways, white-goods, pharmaceuticals and food processing.
             </p>
 
             <ul className="space-y-4 mb-8">
