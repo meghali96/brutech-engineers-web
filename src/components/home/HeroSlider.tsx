@@ -10,10 +10,10 @@ import slide08 from '@/assets/slide-08.jpg';
 
 const slides = [
   {
-    image: slide06,
-    heading: 'DEWALT Power Tools',
-    subheading: 'Built Tough for the Toughest Jobs',
-    buttonText: 'View Products',
+    image: slide01,
+    heading: 'Ingersoll Rand',
+    subheading: 'Precision Power Tools & Complete Industrial Solutions',
+    buttonText: 'Explore Products',
     buttonLink: '/services',
   },
   {
@@ -24,10 +24,10 @@ const slides = [
     buttonLink: '/contact',
   },
   {
-    image: slide01,
-    heading: 'Ingersoll Rand',
-    subheading: 'Precision Power Tools & Complete Industrial Solutions',
-    buttonText: 'Explore Products',
+    image: slide06,
+    heading: 'DEWALT Power Tools',
+    subheading: 'Built Tough for the Toughest Jobs',
+    buttonText: 'View Products',
     buttonLink: '/services',
   },
   {
@@ -35,6 +35,13 @@ const slides = [
     heading: 'Stanley Black & Decker',
     subheading: 'Professional-Grade Power Tools & Solutions',
     buttonText: 'Explore Range',
+    buttonLink: '/services',
+  },
+  {
+    image: slide08,
+    heading: 'URYU - Precision Torque Solutions',
+    subheading: 'Reliable Fastening Tools Built for Accuracy',
+    buttonText: 'Learn More',
     buttonLink: '/services',
   },
 ];
