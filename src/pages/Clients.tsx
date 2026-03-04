@@ -81,7 +81,7 @@ const ClientsPage = () => {
           <div className="flex animate-marquee hover:[animation-play-state:paused]">
             {clients.map((client, index) => (
               <div key={`client-1-${index}`} className="flex-shrink-0 mx-6">
-                <div className="w-44 h-20 bg-background rounded-lg shadow-sm flex items-center justify-center p-2 border border-border hover:border-primary transition-colors">
+                <div className="w-52 h-28 bg-background rounded-lg shadow-sm flex items-center justify-center p-4 border border-border hover:border-primary transition-colors">
                   <img
                     src={client.logo}
                     alt={client.name}
@@ -92,7 +92,7 @@ const ClientsPage = () => {
             ))}
             {clients.map((client, index) => (
               <div key={`client-2-${index}`} className="flex-shrink-0 mx-6">
-                <div className="w-44 h-20 bg-background rounded-lg shadow-sm flex items-center justify-center p-2 border border-border hover:border-primary transition-colors">
+                <div className="w-52 h-28 bg-background rounded-lg shadow-sm flex items-center justify-center p-4 border border-border hover:border-primary transition-colors">
                   <img
                     src={client.logo}
                     alt={client.name}
