@@ -3,7 +3,7 @@ import PageBanner from '@/components/layout/PageBanner';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Factory, Car, Building2, Zap, Fuel, Plane, HardHat, UtensilsCrossed } from 'lucide-react';
-import about3 from '@/assets/about-3.jpg';
+import slide02 from '@/assets/slide-02.jpg';
 
 const brands = [
   'Ingersoll Rand',
