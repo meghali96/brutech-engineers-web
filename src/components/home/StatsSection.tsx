@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Package, Building2, Users } from 'lucide-react';
+import slide04 from '@/assets/slide-04.jpg';
 
 const stats = [
   {
