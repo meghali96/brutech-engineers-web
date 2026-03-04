@@ -10,18 +10,18 @@ import slide08 from '@/assets/slide-08.jpg';
 
 const slides = [
   {
-    image: slide01,
-    heading: 'Ingersoll Rand',
-    subheading: 'Precision Power Tools & Complete Industrial Solutions',
-    buttonText: 'Explore Products',
-    buttonLink: '/services',
-  },
-  {
     image: slide04,
     heading: 'Suitable Solution for Your Industry',
     subheading: 'Precision Machine Parts & Industrial Equipment',
     buttonText: 'Get Quote',
     buttonLink: '/contact',
+  },
+  {
+    image: slide01,
+    heading: 'Ingersoll Rand',
+    subheading: 'Precision Power Tools & Complete Industrial Solutions',
+    buttonText: 'Explore Products',
+    buttonLink: '/services',
   },
   {
     image: slide06,
