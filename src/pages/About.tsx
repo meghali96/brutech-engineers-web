@@ -49,7 +49,7 @@ const AboutPage = () => {
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className="img-zoom rounded-lg overflow-hidden aspect-square"
+                  className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted"
                 >
                   <img
                     src={image}
