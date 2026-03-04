@@ -10,12 +10,7 @@ interface PageBannerProps {
 const PageBanner = ({ title, breadcrumbs, backgroundImage }: PageBannerProps) => {
   return (
     <section
-      className="relative py-14 md:py-20 bg-cover bg-center overflow-hidden"
-      style={{
-        backgroundImage: backgroundImage
-          ? `url(${backgroundImage})`
-          : 'linear-gradient(135deg, hsl(0 0% 20%) 0%, hsl(0 0% 30%) 100%)',
-      }}
+      className="relative py-14 md:py-20 overflow-hidden"
     >
       <div className="absolute inset-0 bg-foreground/75" />
 
