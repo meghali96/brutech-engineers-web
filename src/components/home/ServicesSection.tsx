@@ -11,10 +11,10 @@ const services = [
   { icon: Truck, title: 'Customized Material Handling', description: 'Tailored material handling solutions to streamline logistics', link: '/services#material' },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } } as const;
 const card = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 80, damping: 14 } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 80, damping: 14 } },
 };
 
 const ServicesSection = () => {

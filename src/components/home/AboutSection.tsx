@@ -18,9 +18,9 @@ const features = [
   'Modern manufacturing processes and strict quality checks at every stage',
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
-const imgItem = { hidden: { opacity: 0, scale: 0.85 }, visible: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 120, damping: 14 } } };
-const featureItem = { hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100, damping: 12 } } };
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
+const imgItem = { hidden: { opacity: 0, scale: 0.85 }, visible: { opacity: 1, scale: 1, transition: { type: 'spring' as const, stiffness: 120, damping: 14 } } };
+const featureItem = { hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 12 } } };
 
 const AboutSection = () => {
   return (

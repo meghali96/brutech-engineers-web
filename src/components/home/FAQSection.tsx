@@ -11,8 +11,8 @@ const faqs = [
   { question: 'Where is Brutech located and do you ship nationwide?', answer: 'Brutech is based in India and we ship our products across the country. We also support logistics for bulk orders and urgent deliveries on request.' },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
-const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 14 } } };
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
+const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 14 } } };
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

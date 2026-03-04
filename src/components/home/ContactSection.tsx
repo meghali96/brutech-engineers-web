@@ -29,8 +29,8 @@ const ContactSection = () => {
     { icon: Mail, title: 'Email Us', content: 'sales@brutechengineers.com' },
   ];
 
-  const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-  const card = { hidden: { opacity: 0, y: 30, scale: 0.95 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 100, damping: 14 } } };
+  const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
+  const card = { hidden: { opacity: 0, y: 30, scale: 0.95 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 100, damping: 14 } } };
 
   return (
     <section className="section-padding bg-muted">
