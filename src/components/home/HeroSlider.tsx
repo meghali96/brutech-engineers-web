@@ -106,7 +106,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-[600px] md:h-[700px] lg:h-[90vh] overflow-hidden"
+      className="relative h-[85vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
