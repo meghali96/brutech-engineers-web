@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useScrollAnimation, animationClasses, staggerDelay } from '@/hooks/useScrollAnimation';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -28,19 +29,28 @@ const ContactSection = () => {
     { icon: Mail, title: 'Email Us', content: 'sales@brutechengineers.com' },
   ];
 
+  const header = useScrollAnimation();
+  const cards = useScrollAnimation();
+  const form = useScrollAnimation();
+  const map = useScrollAnimation();
+
   return (
     <section className="section-padding bg-muted">
       <div className="container-custom">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div ref={header.ref} className={`text-center max-w-3xl mx-auto mb-12 ${animationClasses(header.isVisible, 'fadeUp')}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Get in Touch <span className="text-primary">With Us</span>
           </h2>
           <p className="text-muted-foreground">Have questions or need a custom solution? Reach out to the Brutech team — we're here to help you.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div ref={cards.ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {contactInfo.map((info, index) => (
-            <div key={index} className="bg-card rounded-xl p-6 text-center shadow-card border border-border hover:border-primary transition-colors">
+            <div
+              key={index}
+              className={`bg-card rounded-xl p-6 text-center shadow-card border border-border hover:border-primary transition-all duration-500 ${cards.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              style={staggerDelay(index, 120)}
+            >
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <info.icon className="w-8 h-8 text-primary" />
               </div>
@@ -51,7 +61,7 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="bg-card rounded-xl p-8 shadow-card">
+          <div ref={form.ref} className={`bg-card rounded-xl p-8 shadow-card ${animationClasses(form.isVisible, 'slideLeft')}`}>
             <h3 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
             {isSubmitted && (
               <div className="mb-6 p-4 bg-primary/10 border border-primary/30 rounded-lg text-primary">Thank you! Your message has been sent successfully.</div>
@@ -69,7 +79,7 @@ const ContactSection = () => {
             </form>
           </div>
 
-          <div className="rounded-xl overflow-hidden shadow-card h-[400px] lg:h-auto min-h-[400px]">
+          <div ref={map.ref} className={`rounded-xl overflow-hidden shadow-card h-[400px] lg:h-auto min-h-[400px] ${animationClasses(map.isVisible, 'slideRight')}`}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.4776458374!2d78.39849!3d17.49347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f0a69767e7%3A0x8f8bfc7b8b5d8f8b!2sPrashant%20Nagar%2C%20Kukatpally%2C%20Hyderabad%2C%20Telangana%20500072!5e0!3m2!1sen!2sin!4v1234567890"
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Brutech Engineers Location"

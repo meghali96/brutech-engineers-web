@@ -17,6 +17,7 @@ import about3 from '@/assets/about-3.jpg';
 import about4 from '@/assets/about-4.jpg';
 import about5 from '@/assets/about-5.jpg';
 import about6 from '@/assets/about-6.jpg';
+import { useScrollAnimation, animationClasses, staggerDelay } from '@/hooks/useScrollAnimation';
 
 const galleryImages = [
   { src: slide01, title: 'Ingersoll Rand - Precision Power Tools', category: 'Products' },
@@ -41,27 +42,16 @@ const categories = ['All', 'Products', 'Workshop'];
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const gridAnim = useScrollAnimation();
+  const filterAnim = useScrollAnimation();
 
-  const filteredImages = selectedCategory === 'All'
-    ? galleryImages
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const filteredImages = selectedCategory === 'All' ? galleryImages : galleryImages.filter(img => img.category === selectedCategory);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
+  const goNext = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex + 1) % filteredImages.length); };
+  const goPrev = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + filteredImages.length) % filteredImages.length); };
 
-  const goNext = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % filteredImages.length);
-    }
-  };
-
-  const goPrev = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + filteredImages.length) % filteredImages.length);
-    }
-  };
-
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') goNext();
@@ -70,48 +60,31 @@ const GalleryPage = () => {
 
   return (
     <Layout>
-      <PageBanner
-        title="Gallery"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Gallery' },
-        ]}
-        backgroundImage={slide04}
-      />
+      <PageBanner title="Gallery" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Gallery' }]} backgroundImage={slide04} />
 
       <section className="section-padding bg-background">
         <div className="container-custom">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div ref={filterAnim.ref} className={`flex flex-wrap justify-center gap-3 mb-12 ${animationClasses(filterAnim.isVisible, 'fadeUp')}`}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
-                  selectedCategory === cat
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary'
-                }`}
+                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary'}`}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div ref={gridAnim.ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-xl border border-border bg-muted cursor-pointer aspect-video"
+                className={`group relative overflow-hidden rounded-xl border border-border bg-muted cursor-pointer aspect-video transition-all duration-600 ${gridAnim.isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'}`}
+                style={staggerDelay(index, 60)}
                 onClick={() => openLightbox(index)}
               >
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
+                <img src={image.src} alt={image.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                 <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-all duration-300 flex items-end">
                   <div className="p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-background font-semibold text-sm">{image.title}</p>
@@ -124,56 +97,15 @@ const GalleryPage = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-foreground/95 flex items-center justify-center"
-          onClick={closeLightbox}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          role="dialog"
-          aria-label="Image lightbox"
-        >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50"
-            aria-label="Close lightbox"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          {/* Prev */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          {/* Next */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goNext(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Image */}
+        <div className="fixed inset-0 z-50 bg-foreground/95 flex items-center justify-center" onClick={closeLightbox} onKeyDown={handleKeyDown} tabIndex={0} role="dialog" aria-label="Image lightbox">
+          <button onClick={closeLightbox} className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-6 h-6" /></button>
+          <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Previous image"><ChevronLeft className="w-6 h-6" /></button>
+          <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Next image"><ChevronRight className="w-6 h-6" /></button>
           <div className="max-w-5xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={filteredImages[lightboxIndex].src}
-              alt={filteredImages[lightboxIndex].title}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg animate-scale-in"
-            />
-            <p className="text-center text-background mt-4 font-semibold">
-              {filteredImages[lightboxIndex].title}
-            </p>
-            <p className="text-center text-primary text-sm mt-1">
-              {lightboxIndex + 1} / {filteredImages.length}
-            </p>
+            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg animate-scale-in" />
+            <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
+            <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
           </div>
         </div>
       )}
