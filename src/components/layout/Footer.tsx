@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Globe, Facebook, Linkedin, Twitter } from 'lucide-react';
 import logo from '@/assets/brutech-logo.png';
+import slide04 from '@/assets/slide-04.jpg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
