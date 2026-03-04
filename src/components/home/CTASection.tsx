@@ -2,14 +2,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone } from 'lucide-react';
-import slide04 from '@/assets/slide-04.jpg';
 
 const CTASection = () => {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
-      <div className="absolute inset-0 bg-foreground/85" />
-      <div className="container-custom relative z-10">
+    <section className="py-20 md:py-28 bg-foreground">
+      <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -33,7 +30,7 @@ const CTASection = () => {
             </Link>
             <a href="tel:+917702949688">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-2 border-background/30 text-background hover:bg-background/10 font-semibold px-8 py-6 text-lg">
+                <Button size="lg" className="bg-primary/20 text-primary border-2 border-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-6 text-lg">
                   <Phone className="w-5 h-5 mr-2" /> Call Us Now
                 </Button>
               </motion.div>
