@@ -32,6 +32,8 @@ const AnimatedRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
+    </>
+
   );
 };
 
