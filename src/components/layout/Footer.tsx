@@ -131,7 +131,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-background/10">
+      <div className="border-t border-background/10 relative z-10">
         <div className="container-custom py-6 text-center">
           <p className="text-background/60 text-sm">
             © {currentYear} Copyright BruTech Engineers. All Rights Reserved
