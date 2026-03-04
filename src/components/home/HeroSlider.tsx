@@ -14,24 +14,10 @@ import slide09 from '@/assets/slide-09.jpg';
 
 const slides = [
   {
-    image: slide01,
-    heading: 'Ingersoll Rand',
-    subheading: 'Precision Power Tools & Complete Industrial Solutions',
-    buttonText: 'Explore Products',
-    buttonLink: '/services',
-  },
-  {
-    image: slide02,
-    heading: 'Ingersoll Rand',
-    subheading: 'Complete Industrial Solutions & Accessories',
-    buttonText: 'Learn More',
-    buttonLink: '/services',
-  },
-  {
-    image: slide03,
-    heading: 'Ingersoll Rand',
-    subheading: 'Power Tools, Lifting & Material Handling',
-    buttonText: 'View Solutions',
+    image: slide06,
+    heading: 'DEWALT Power Tools',
+    subheading: 'Built Tough for the Toughest Jobs',
+    buttonText: 'View Products',
     buttonLink: '/services',
   },
   {
@@ -42,17 +28,10 @@ const slides = [
     buttonLink: '/contact',
   },
   {
-    image: slide05,
+    image: slide01,
     heading: 'Ingersoll Rand',
-    subheading: 'Precision Power. Engineered Future.',
-    buttonText: 'View Range',
-    buttonLink: '/services',
-  },
-  {
-    image: slide06,
-    heading: 'DEWALT Power Tools',
-    subheading: 'Built Tough for the Toughest Jobs',
-    buttonText: 'View Products',
+    subheading: 'Precision Power Tools & Complete Industrial Solutions',
+    buttonText: 'Explore Products',
     buttonLink: '/services',
   },
   {
@@ -60,20 +39,6 @@ const slides = [
     heading: 'Stanley Black & Decker',
     subheading: 'Professional-Grade Power Tools & Solutions',
     buttonText: 'Explore Range',
-    buttonLink: '/services',
-  },
-  {
-    image: slide08,
-    heading: 'URYU - Precision Torque Solutions',
-    subheading: 'Reliable Fastening Tools Built for Accuracy',
-    buttonText: 'Learn More',
-    buttonLink: '/services',
-  },
-  {
-    image: slide09,
-    heading: 'URYU - Industrial Fastening',
-    subheading: 'High-Performance Pulse Tools for Every Application',
-    buttonText: 'View Products',
     buttonLink: '/services',
   },
 ];
