@@ -124,8 +124,10 @@ const AboutPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 md:py-24 bg-foreground">
-        <div className="container-custom">
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <img src={slide01} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+        <div className="absolute inset-0 bg-foreground/85" />
+        <div className="container-custom relative z-10">
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
