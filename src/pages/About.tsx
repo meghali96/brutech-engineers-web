@@ -9,7 +9,7 @@ import about3 from '@/assets/about-3.jpg';
 import about4 from '@/assets/about-4.jpg';
 import about5 from '@/assets/about-5.jpg';
 import about6 from '@/assets/about-6.jpg';
-import aboutBanner from '@/assets/about-banner.jpg';
+import slide04 from '@/assets/slide-04.jpg';
 
 const images = [about1, about2, about3, about4, about5, about6];
 
