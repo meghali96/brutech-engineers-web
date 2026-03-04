@@ -21,55 +21,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-background">
-      {/* Address Marquee */}
-      <div className="bg-primary text-primary-foreground py-2 overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap flex gap-16">
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <MapPin className="w-4 h-4 flex-shrink-0" />
-            Head Office: H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Phone className="w-4 h-4 flex-shrink-0" />
-            7702949688, 7702949690
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <MapPin className="w-4 h-4 flex-shrink-0" />
-            Branch Office: 3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Phone className="w-4 h-4 flex-shrink-0" />
-            9381755470
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Mail className="w-4 h-4 flex-shrink-0" />
-            sales@brutechengineers.com
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Globe className="w-4 h-4 flex-shrink-0" />
-            www.brutechengineers.com
-          </span>
-          {/* Duplicate for seamless loop */}
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <MapPin className="w-4 h-4 flex-shrink-0" />
-            Head Office: H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Phone className="w-4 h-4 flex-shrink-0" />
-            7702949688, 7702949690
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <MapPin className="w-4 h-4 flex-shrink-0" />
-            Branch Office: 3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035
-          </span>
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Phone className="w-4 h-4 flex-shrink-0" />
-            9381755470
-          </span>
-        </div>
-      </div>
+    <footer className="relative text-background">
+      <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+      <div className="absolute inset-0 bg-foreground/90" />
 
-      <div className="container-custom section-padding">
+      <div className="container-custom section-padding relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: About */}
           <div>
