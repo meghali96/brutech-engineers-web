@@ -3,7 +3,7 @@ import PageBanner from '@/components/layout/PageBanner';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Wrench, Container, Wind, Settings, Droplets, Truck, Check, ArrowRight } from 'lucide-react';
-import hero2 from '@/assets/hero-2.jpg';
+import slide03 from '@/assets/slide-03.jpg';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
@@ -107,7 +107,7 @@ const ServicesPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Services' },
         ]}
-        backgroundImage={hero2}
+        backgroundImage={slide03}
       />
 
       {/* Intro */}

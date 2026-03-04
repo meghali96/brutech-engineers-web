@@ -2,103 +2,79 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import hero1 from '@/assets/hero-1.jpg';
-import hero2 from '@/assets/hero-2.jpg';
-import hero3 from '@/assets/hero-3.jpg';
-import heroUryu1 from '@/assets/hero-uryu-1.jpg';
-import heroUryu2 from '@/assets/hero-uryu-2.jpg';
-import heroStanley from '@/assets/hero-stanley.jpg';
-import heroDewalt1 from '@/assets/hero-dewalt-1.jpg';
-import heroIR1 from '@/assets/hero-ir-1.jpg';
-import heroIR2 from '@/assets/hero-ir-2.jpg';
-import heroIR3 from '@/assets/hero-ir-3.jpg';
-import heroIR4 from '@/assets/hero-ir-4.jpg';
-import heroIR5 from '@/assets/hero-ir-5.jpg';
+import slide01 from '@/assets/slide-01.jpg';
+import slide02 from '@/assets/slide-02.jpg';
+import slide03 from '@/assets/slide-03.jpg';
+import slide04 from '@/assets/slide-04.jpg';
+import slide05 from '@/assets/slide-05.jpg';
+import slide06 from '@/assets/slide-06.jpg';
+import slide07 from '@/assets/slide-07.jpg';
+import slide08 from '@/assets/slide-08.jpg';
+import slide09 from '@/assets/slide-09.jpg';
 
 const slides = [
   {
-    image: hero1,
-    heading: 'Suitable Solution for Your Industry',
-    subheading: 'Precision Machine Parts & Lifting Solutions',
-    buttonText: 'Get Quote',
-    buttonLink: '/contact',
-  },
-  {
-    image: heroIR1,
+    image: slide01,
     heading: 'Ingersoll Rand',
-    subheading: 'Precision Power. Engineered Future.',
+    subheading: 'Precision Power Tools & Complete Industrial Solutions',
     buttonText: 'Explore Products',
     buttonLink: '/services',
   },
   {
-    image: heroIR2,
+    image: slide02,
     heading: 'Ingersoll Rand',
     subheading: 'Complete Industrial Solutions & Accessories',
     buttonText: 'Learn More',
     buttonLink: '/services',
   },
   {
-    image: heroIR3,
+    image: slide03,
     heading: 'Ingersoll Rand',
     subheading: 'Power Tools, Lifting & Material Handling',
     buttonText: 'View Solutions',
     buttonLink: '/services',
   },
   {
-    image: heroIR4,
-    heading: 'Ingersoll Rand',
-    subheading: 'Global Leadership Since 1966 — Innovation & Reliability',
-    buttonText: 'Discover More',
-    buttonLink: '/services',
+    image: slide04,
+    heading: 'Suitable Solution for Your Industry',
+    subheading: 'Precision Machine Parts & Industrial Equipment',
+    buttonText: 'Get Quote',
+    buttonLink: '/contact',
   },
   {
-    image: heroIR5,
+    image: slide05,
     heading: 'Ingersoll Rand',
     subheading: 'Precision Power. Engineered Future.',
     buttonText: 'View Range',
     buttonLink: '/services',
   },
   {
-    image: heroUryu1,
-    heading: 'URYU - Industrial Fastening Solutions',
-    subheading: 'High-Performance Pulse Tools for Every Application',
-    buttonText: 'View Products',
-    buttonLink: '/services',
-  },
-  {
-    image: heroUryu2,
-    heading: 'URYU - Precision Torque Solutions',
-    subheading: 'Reliable Fastening Tools Built for Accuracy',
-    buttonText: 'Learn More',
-    buttonLink: '/services',
-  },
-  {
-    image: heroStanley,
-    heading: 'Stanley Black & Decker',
-    subheading: 'Professional-Grade Power Tools & Solutions',
-    buttonText: 'Explore Range',
-    buttonLink: '/services',
-  },
-  {
-    image: heroDewalt1,
+    image: slide06,
     heading: 'DEWALT Power Tools',
     subheading: 'Built Tough for the Toughest Jobs',
     buttonText: 'View Products',
     buttonLink: '/services',
   },
   {
-    image: hero2,
-    heading: 'Boost Your Productivity',
-    subheading: 'Quality Industrial Tools & Equipment',
-    buttonText: 'View Services',
+    image: slide07,
+    heading: 'Stanley Black & Decker',
+    subheading: 'Professional-Grade Power Tools & Solutions',
+    buttonText: 'Explore Range',
     buttonLink: '/services',
   },
   {
-    image: hero3,
-    heading: 'Reduce Production Cost',
-    subheading: 'Boost Operational Efficiency',
-    buttonText: 'Contact Us',
-    buttonLink: '/contact',
+    image: slide08,
+    heading: 'URYU - Precision Torque Solutions',
+    subheading: 'Reliable Fastening Tools Built for Accuracy',
+    buttonText: 'Learn More',
+    buttonLink: '/services',
+  },
+  {
+    image: slide09,
+    heading: 'URYU - Industrial Fastening',
+    subheading: 'High-Performance Pulse Tools for Every Application',
+    buttonText: 'View Products',
+    buttonLink: '/services',
   },
 ];
 
@@ -150,13 +126,13 @@ const HeroSlider = () => {
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
           />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-foreground/60" />
+          {/* Darker Overlay for better text visibility */}
+          <div className="absolute inset-0 bg-foreground/80" />
 
           {/* Content */}
           <div className="container-custom h-full flex items-center relative z-10">
             <div className={`max-w-3xl transition-all duration-700 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-background mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight hero-animated-text">
                 {slide.heading}
               </h1>
               <p className="text-xl md:text-2xl text-background/90 mb-8">

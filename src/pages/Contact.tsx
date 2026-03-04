@@ -3,7 +3,7 @@ import Layout from '@/components/layout/Layout';
 import PageBanner from '@/components/layout/PageBanner';
 import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import about3 from '@/assets/about-3.jpg';
+import slide01 from '@/assets/slide-01.jpg';
 
 const contactInfo = [
   {
@@ -78,7 +78,7 @@ const ContactPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Contact' },
         ]}
-        backgroundImage={about3}
+        backgroundImage={slide01}
       />
 
       {/* Intro */}
