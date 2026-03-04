@@ -3,14 +3,9 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import slide01 from '@/assets/slide-01.jpg';
-import slide02 from '@/assets/slide-02.jpg';
-import slide03 from '@/assets/slide-03.jpg';
 import slide04 from '@/assets/slide-04.jpg';
-import slide05 from '@/assets/slide-05.jpg';
 import slide06 from '@/assets/slide-06.jpg';
 import slide07 from '@/assets/slide-07.jpg';
-import slide08 from '@/assets/slide-08.jpg';
-import slide09 from '@/assets/slide-09.jpg';
 
 const slides = [
   {
