@@ -25,8 +25,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: About */}
           <div>
-            <Link to="/" className="inline-block mb-6 bg-background rounded-lg p-4">
-              <img src={logo} alt="Brutech Engineers" className="h-16 w-auto" />
+            <Link to="/" className="inline-block mb-6 bg-background rounded-lg px-6 py-5">
+              <img src={logo} alt="Brutech Engineers" className="h-20 w-auto" />
             </Link>
             <p className="text-background/80 mb-6 text-sm leading-relaxed">
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.
