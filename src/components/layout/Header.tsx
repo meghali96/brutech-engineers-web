@@ -98,11 +98,11 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="container-custom py-4">
+      <div className="container-custom py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src={logo} alt="Brutech Engineers" className="h-14 md:h-20 w-auto" />
+            <img src={logo} alt="Brutech Engineers" className="h-12 md:h-14 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

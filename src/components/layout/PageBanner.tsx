@@ -10,7 +10,7 @@ interface PageBannerProps {
 const PageBanner = ({ title, breadcrumbs, backgroundImage }: PageBannerProps) => {
   return (
     <section
-      className="relative py-24 md:py-32 bg-cover bg-center"
+      className="relative py-28 md:py-36 bg-cover bg-center"
       style={{
         backgroundImage: backgroundImage
           ? `url(${backgroundImage})`
