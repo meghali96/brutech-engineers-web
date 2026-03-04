@@ -6,6 +6,7 @@ import slide01 from '@/assets/slide-01.jpg';
 import slide04 from '@/assets/slide-04.jpg';
 import slide06 from '@/assets/slide-06.jpg';
 import slide07 from '@/assets/slide-07.jpg';
+import slide08 from '@/assets/slide-08.jpg';
 
 const slides = [
   {
