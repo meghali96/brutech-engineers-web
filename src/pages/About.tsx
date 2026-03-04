@@ -1,6 +1,6 @@
 import Layout from '@/components/layout/Layout';
 import PageBanner from '@/components/layout/PageBanner';
-import { Check, Package, Building2, Users } from 'lucide-react';
+import { Check, Package, Building2, Users, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import about1 from '@/assets/about-1.jpg';
@@ -47,16 +47,8 @@ const AboutPage = () => {
             {/* Image Grid */}
             <div className="grid grid-cols-3 gap-3 md:gap-4">
               {images.map((image, index) => (
-                <div
-                  key={index}
-                  className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted"
-                >
-                  <img
-                    src={image}
-                    alt={`About Brutech ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                <div key={index} className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted">
+                  <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -92,19 +84,41 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Mission & Vision Side by Side */}
       <section className="section-padding bg-muted">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Our <span className="text-primary">Mission</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              To substantially improve the productivity of our customers by enhancing efficiency, ergonomics, accuracy and speed in their manufacturing process. To help our customers to safeguard the safety and health of their employees and to assist them in being environment friendly and green companies.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base. We represent brands which are known all over the world for their quality and are market leaders in their respective fields.
-            </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Mission */}
+            <div className="bg-card rounded-xl p-8 shadow-card border border-border">
+              <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                <Target className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Our <span className="text-primary">Mission</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To substantially improve the productivity of our customers by enhancing efficiency, ergonomics, accuracy and speed in their manufacturing process.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                To help our customers to safeguard the safety and health of their employees and to assist them in being environment friendly and green companies.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div className="bg-card rounded-xl p-8 shadow-card border border-border">
+              <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                <Eye className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Our <span className="text-primary">Vision</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To be the most trusted and preferred industrial solutions partner across India, known for innovation, quality, and customer-first approach.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base. We represent brands which are known all over the world for their quality and are market leaders in their respective fields.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -118,9 +132,7 @@ const AboutPage = () => {
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
                   <stat.icon className="w-10 h-10 text-primary" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-background mb-2">
-                  {stat.value}
-                </div>
+                <div className="text-4xl md:text-5xl font-bold text-background mb-2">{stat.value}</div>
                 <p className="text-background/70 text-lg">{stat.label}</p>
               </div>
             ))}
@@ -131,16 +143,12 @@ const AboutPage = () => {
       {/* CTA Section */}
       <section className="section-padding bg-background">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Ready to Work with Us?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let's discuss how Brutech can help improve your manufacturing processes with our precision-crafted components.
           </p>
           <Link to="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
-              Get Quote
-            </Button>
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get Quote</Button>
           </Link>
         </div>
       </section>

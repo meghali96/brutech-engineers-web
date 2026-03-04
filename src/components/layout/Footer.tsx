@@ -21,6 +21,53 @@ const Footer = () => {
 
   return (
     <footer className="bg-foreground text-background">
+      {/* Address Marquee */}
+      <div className="bg-primary text-primary-foreground py-2 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap flex gap-16">
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <MapPin className="w-4 h-4 flex-shrink-0" />
+            Head Office: H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Phone className="w-4 h-4 flex-shrink-0" />
+            7702949688, 7702949690
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <MapPin className="w-4 h-4 flex-shrink-0" />
+            Branch Office: 3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Phone className="w-4 h-4 flex-shrink-0" />
+            9381755470
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Mail className="w-4 h-4 flex-shrink-0" />
+            sales@brutechengineers.com
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Globe className="w-4 h-4 flex-shrink-0" />
+            www.brutechengineers.com
+          </span>
+          {/* Duplicate for seamless loop */}
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <MapPin className="w-4 h-4 flex-shrink-0" />
+            Head Office: H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Phone className="w-4 h-4 flex-shrink-0" />
+            7702949688, 7702949690
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <MapPin className="w-4 h-4 flex-shrink-0" />
+            Branch Office: 3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035
+          </span>
+          <span className="inline-flex items-center gap-2 text-sm font-medium">
+            <Phone className="w-4 h-4 flex-shrink-0" />
+            9381755470
+          </span>
+        </div>
+      </div>
+
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: About */}
@@ -32,33 +79,9 @@ const Footer = () => {
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Twitter"><Twitter className="w-5 h-5" /></a>
             </div>
           </div>
 
@@ -71,16 +94,24 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-background/80 text-sm">
-                  H No: 5-36/191 Prashant Nagar, Kukatpally, Hyderabad-500072
-                </span>
+                <div className="text-background/80 text-sm">
+                  <p className="font-semibold text-background mb-1">Head Office:</p>
+                  <p>H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <p className="font-semibold text-background mb-1">Branch Office:</p>
+                  <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-background/80 text-sm">
                   <a href="tel:+917702949688" className="hover:text-primary transition-colors block">+91 7702949688</a>
                   <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
-                  <a href="tel:+918919333433" className="hover:text-primary transition-colors block">+91 8919333433</a>
+                  <a href="tel:+919381755470" className="hover:text-primary transition-colors block">+91 9381755470</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -108,10 +139,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-background/80 text-sm hover:text-primary transition-colors flex items-center gap-2 group"
-                  >
+                  <Link to={link.path} className="text-background/80 text-sm hover:text-primary transition-colors flex items-center gap-2 group">
                     <span className="w-0 h-0.5 bg-primary transition-all group-hover:w-3" />
                     {link.name}
                   </Link>
