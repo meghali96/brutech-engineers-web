@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex flex-col min-h-screen">
       <AddressMarquee />
       <Header />
-      <main className="flex-grow pt-[94px] lg:pt-[130px]">
+      <main className="flex-grow pt-[80px] lg:pt-[100px]">
         {children}
       </main>
       <Footer />

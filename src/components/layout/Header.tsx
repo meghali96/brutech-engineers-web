@@ -71,31 +71,6 @@ const Header = () => {
 
   return (
     <header className={`fixed top-[30px] left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}>
-      {/* Top Bar */}
-      <div className="bg-foreground text-background py-1.5 hidden lg:block text-sm">
-        <div className="container-custom flex justify-between items-center text-sm">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span>H No: 5-36/191, Prashant Nagar, Kukatpally, Hyderabad-500072</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-primary" />
-              <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="tel:+917702949688" className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Phone className="w-4 h-4 text-primary" />
-              <span>+91 7702949688 / 7702949690</span>
-            </a>
-            <a href="mailto:sales@brutechengineers.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Mail className="w-4 h-4 text-primary" />
-              <span>sales@brutechengineers.com</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Main Header */}
       <div className="container-custom py-1.5">
