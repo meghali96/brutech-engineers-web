@@ -1,8 +1,10 @@
 import Layout from '@/components/layout/Layout';
 import PageBanner from '@/components/layout/PageBanner';
+import PageTransition from '@/components/layout/PageTransition';
 import { Check, Package, Building2, Users, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
@@ -10,7 +12,7 @@ import about4 from '@/assets/about-4.jpg';
 import about5 from '@/assets/about-5.jpg';
 import about6 from '@/assets/about-6.jpg';
 import slide01 from '@/assets/slide-01.jpg';
-import { useScrollAnimation, animationClasses, staggerDelay } from '@/hooks/useScrollAnimation';
+import { useCountUp } from '@/hooks/useCountUp';
 
 const images = [about1, about2, about3, about4, about5, about6];
 
@@ -24,142 +26,123 @@ const features = [
 ];
 
 const stats = [
-  { icon: Package, value: '10,000+', label: 'Machine Parts Delivered' },
-  { icon: Building2, value: '25+', label: 'Industries Served' },
-  { icon: Users, value: '20+', label: 'Skilled Engineers & Staff' },
+  { icon: Package, value: 10000, suffix: '+', label: 'Machine Parts Delivered' },
+  { icon: Building2, value: 25, suffix: '+', label: 'Industries Served' },
+  { icon: Users, value: 20, suffix: '+', label: 'Skilled Engineers & Staff' },
 ];
 
-const AboutPage = () => {
-  const imgAnim = useScrollAnimation();
-  const contentAnim = useScrollAnimation();
-  const missionAnim = useScrollAnimation();
-  const visionAnim = useScrollAnimation();
-  const statsAnim = useScrollAnimation();
-  const ctaAnim = useScrollAnimation();
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
+const imgItem = { hidden: { opacity: 0, scale: 0.85 }, visible: { opacity: 1, scale: 1, transition: { type: 'spring' as const, stiffness: 120, damping: 14 } } };
+const featureItem = { hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 12 } } };
 
+const StatItem = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
+  const { count, ref, isInView } = useCountUp(stat.value, 2000);
+  const formatNumber = (num: number) => num >= 1000 ? num.toLocaleString() : num.toString();
   return (
-    <Layout>
-      <PageBanner title="About Us" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'About Us' }]} backgroundImage={slide01} />
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ type: 'spring', stiffness: 80, damping: 14, delay: index * 0.15 }}
+      className="text-center"
+    >
+      <motion.div whileHover={{ scale: 1.15, rotate: 5 }} transition={{ type: 'spring', stiffness: 300 }} className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
+        <stat.icon className="w-10 h-10 text-primary" />
+      </motion.div>
+      <div className="text-4xl md:text-5xl font-bold text-background mb-2">{isInView ? formatNumber(count) : '0'}{stat.suffix}</div>
+      <p className="text-background/70 text-lg">{stat.label}</p>
+    </motion.div>
+  );
+};
 
-      {/* Company Story */}
-      <section className="section-padding bg-background">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div ref={imgAnim.ref} className={`grid grid-cols-3 gap-3 md:gap-4 ${animationClasses(imgAnim.isVisible, 'slideLeft')}`}>
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className={`img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted transition-all duration-500 ${imgAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                  style={staggerDelay(index, 80)}
-                >
-                  <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
-                </div>
-              ))}
-            </div>
+const AboutPage = () => {
+  return (
+    <PageTransition>
+      <Layout>
+        <PageBanner title="About Us" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'About Us' }]} backgroundImage={slide01} />
 
-            <div ref={contentAnim.ref} className={animationClasses(contentAnim.isVisible, 'slideRight')}>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                About <span className="text-primary">BruTech</span> Engineers
-              </h2>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.
-              </p>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Brutech started as an assembly equipment and solution provider to Automotive OEMs. Today we serve leading automotive OEMs, their vendors and other industries including railways, white-goods, pharmaceuticals and food processing.
-              </p>
-
-              <ul className="space-y-4 mb-8">
-                {features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className={`flex items-start gap-3 transition-all duration-500 ${contentAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
-                    style={staggerDelay(index, 100)}
-                  >
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                      <Check className="w-4 h-4 text-primary" />
-                    </span>
-                    <span className="text-foreground">{feature}</span>
-                  </li>
+        {/* Company Story */}
+        <section className="section-padding bg-background">
+          <div className="container-custom">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="grid grid-cols-3 gap-3 md:gap-4">
+                {images.map((image, index) => (
+                  <motion.div key={index} variants={imgItem} whileHover={{ scale: 1.05 }} className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted">
+                    <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                  </motion.div>
                 ))}
-              </ul>
+              </motion.div>
 
-              <p className="text-muted-foreground leading-relaxed">
-                At Brutech, we don't just supply parts — we provide reliability, support, and a promise to keep your business moving.
-              </p>
+              <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ type: 'spring', stiffness: 60, damping: 16 }}>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">About <span className="text-primary">BruTech</span> Engineers</h2>
+                <p className="text-muted-foreground mb-6 leading-relaxed">Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.</p>
+                <p className="text-muted-foreground mb-8 leading-relaxed">Brutech started as an assembly equipment and solution provider to Automotive OEMs. Today we serve leading automotive OEMs, their vendors and other industries including railways, white-goods, pharmaceuticals and food processing.</p>
+
+                <motion.ul variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} className="space-y-4 mb-8">
+                  {features.map((feature, index) => (
+                    <motion.li key={index} variants={featureItem} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5"><Check className="w-4 h-4 text-primary" /></span>
+                      <span className="text-foreground">{feature}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+                <p className="text-muted-foreground leading-relaxed">At Brutech, we don't just supply parts — we provide reliability, support, and a promise to keep your business moving.</p>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Mission & Vision */}
-      <section className="section-padding bg-muted">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div ref={missionAnim.ref} className={`bg-card rounded-xl p-8 shadow-card border border-border ${animationClasses(missionAnim.isVisible, 'slideLeft')}`}>
-              <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                <Target className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Mission</span></h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                To substantially improve the productivity of our customers by enhancing efficiency, ergonomics, accuracy and speed in their manufacturing process.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                To help our customers to safeguard the safety and health of their employees and to assist them in being environment friendly and green companies.
-              </p>
-            </div>
+        {/* Mission & Vision */}
+        <section className="section-padding bg-muted">
+          <div className="container-custom">
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ type: 'spring', stiffness: 60, damping: 16 }} whileHover={{ y: -4 }} className="bg-card rounded-xl p-8 shadow-card border border-border">
+                <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 300 }} className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Target className="w-8 h-8 text-primary" />
+                </motion.div>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Mission</span></h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">To substantially improve the productivity of our customers by enhancing efficiency, ergonomics, accuracy and speed in their manufacturing process.</p>
+                <p className="text-muted-foreground leading-relaxed">To help our customers to safeguard the safety and health of their employees and to assist them in being environment friendly and green companies.</p>
+              </motion.div>
 
-            <div ref={visionAnim.ref} className={`bg-card rounded-xl p-8 shadow-card border border-border ${animationClasses(visionAnim.isVisible, 'slideRight')}`}>
-              <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                <Eye className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Vision</span></h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                To be the most trusted and preferred industrial solutions partner across India, known for innovation, quality, and customer-first approach.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base.
-              </p>
+              <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ type: 'spring', stiffness: 60, damping: 16 }} whileHover={{ y: -4 }} className="bg-card rounded-xl p-8 shadow-card border border-border">
+                <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 300 }} className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Eye className="w-8 h-8 text-primary" />
+                </motion.div>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Vision</span></h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">To be the most trusted and preferred industrial solutions partner across India, known for innovation, quality, and customer-first approach.</p>
+                <p className="text-muted-foreground leading-relaxed">With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base.</p>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
-        <img src={slide01} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
-        <div className="absolute inset-0 bg-foreground/85" />
-        <div ref={statsAnim.ref} className="container-custom relative z-10">
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`text-center transition-all duration-700 ${statsAnim.isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
-                style={staggerDelay(index, 200)}
-              >
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-                  <stat.icon className="w-10 h-10 text-primary" />
-                </div>
-                <div className="text-4xl md:text-5xl font-bold text-background mb-2">{stat.value}</div>
-                <p className="text-background/70 text-lg">{stat.label}</p>
-              </div>
-            ))}
+        {/* Stats */}
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          <img src={slide01} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-foreground/85" />
+          <div className="container-custom relative z-10">
+            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+              {stats.map((stat, index) => <StatItem key={index} stat={stat} index={index} />)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-background">
-        <div ref={ctaAnim.ref} className={`container-custom text-center ${animationClasses(ctaAnim.isVisible, 'scaleIn')}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let's discuss how Brutech can help improve your manufacturing processes with our precision-crafted components.
-          </p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get Quote</Button>
-          </Link>
-        </div>
-      </section>
-    </Layout>
+        {/* CTA */}
+        <section className="section-padding bg-background">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: '-60px' }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Let's discuss how Brutech can help improve your manufacturing processes with our precision-crafted components.</p>
+            <Link to="/contact">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get Quote</Button>
+              </motion.div>
+            </Link>
+          </motion.div>
+        </section>
+      </Layout>
+    </PageTransition>
   );
 };
 
