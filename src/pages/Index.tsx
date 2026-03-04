@@ -6,7 +6,6 @@ import ServicesSection from '@/components/home/ServicesSection';
 import StatsSection from '@/components/home/StatsSection';
 import ClientsCarousel from '@/components/home/ClientsCarousel';
 import FAQSection from '@/components/home/FAQSection';
-import CTASection from '@/components/home/CTASection';
 
 const Index = () => {
   return (
@@ -18,7 +17,6 @@ const Index = () => {
         <StatsSection />
         <ClientsCarousel />
         <FAQSection />
-        <CTASection />
       </Layout>
     </PageTransition>
   );
