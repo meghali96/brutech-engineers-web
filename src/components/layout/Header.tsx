@@ -70,7 +70,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}>
+    <header className={`fixed top-[30px] left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}>
       {/* Top Bar */}
       <div className="bg-foreground text-background py-1.5 hidden lg:block text-sm">
         <div className="container-custom flex justify-between items-center text-sm">
