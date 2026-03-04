@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}>
       {/* Top Bar */}
-      <div className="bg-foreground text-background py-1.5 hidden lg:block text-xs">
+      <div className="bg-foreground text-background py-1.5 hidden lg:block text-sm">
         <div className="container-custom flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -98,11 +98,11 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="container-custom py-1">
+      <div className="container-custom py-1.5">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src={logo} alt="Brutech Engineers" className="h-10 md:h-12 w-auto" />
+            <img src={logo} alt="Brutech Engineers" className="h-12 md:h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
