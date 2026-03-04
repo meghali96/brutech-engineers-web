@@ -15,7 +15,7 @@ import { useScrollAnimation, animationClasses, staggerDelay } from '@/hooks/useS
 const images = [about1, about2, about3, about4, about5, about6];
 
 const features = [
-  'Over 3 years of proven excellence in the industrial components industry',
+  'Over 4 years of proven excellence in the industrial components industry',
   'Specialists in both standard and custom machine part fabrication for diverse sectors',
   'Skilled team focused on accuracy, durability, and engineering efficiency',
   'Quick turnaround times without compromising on quality',
