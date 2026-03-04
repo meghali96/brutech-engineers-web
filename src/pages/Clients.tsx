@@ -41,7 +41,7 @@ const ClientsPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Our Clients' },
         ]}
-        backgroundImage={about3}
+        backgroundImage={slide02}
       />
 
       {/* Intro */}

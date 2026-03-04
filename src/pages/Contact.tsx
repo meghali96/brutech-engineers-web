@@ -78,7 +78,7 @@ const ContactPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Contact' },
         ]}
-        backgroundImage={about3}
+        backgroundImage={slide01}
       />
 
       {/* Intro */}

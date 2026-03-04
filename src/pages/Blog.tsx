@@ -80,7 +80,7 @@ const BlogPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Blog' },
         ]}
-        backgroundImage={about1}
+        backgroundImage={slide05}
       />
 
       <section className="section-padding bg-background">

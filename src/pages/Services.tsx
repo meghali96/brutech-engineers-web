@@ -107,7 +107,7 @@ const ServicesPage = () => {
           { name: 'Home', path: '/' },
           { name: 'Services' },
         ]}
-        backgroundImage={hero2}
+        backgroundImage={slide03}
       />
 
       {/* Intro */}

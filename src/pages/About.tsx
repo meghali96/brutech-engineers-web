@@ -37,7 +37,7 @@ const AboutPage = () => {
           { name: 'Home', path: '/' },
           { name: 'About Us' },
         ]}
-        backgroundImage={aboutBanner}
+        backgroundImage={slide04}
       />
 
       {/* Company Story */}
