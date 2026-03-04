@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout';
+import PageTransition from '@/components/layout/PageTransition';
 import HeroSlider from '@/components/home/HeroSlider';
 import AboutSection from '@/components/home/AboutSection';
 import ServicesSection from '@/components/home/ServicesSection';
@@ -9,15 +10,17 @@ import ContactSection from '@/components/home/ContactSection';
 
 const Index = () => {
   return (
-    <Layout>
-      <HeroSlider />
-      <AboutSection />
-      <ServicesSection />
-      <StatsSection />
-      <ClientsCarousel />
-      <FAQSection />
-      <ContactSection />
-    </Layout>
+    <PageTransition>
+      <Layout>
+        <HeroSlider />
+        <AboutSection />
+        <ServicesSection />
+        <StatsSection />
+        <ClientsCarousel />
+        <FAQSection />
+        <ContactSection />
+      </Layout>
+    </PageTransition>
   );
 };
 
