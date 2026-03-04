@@ -78,7 +78,9 @@ const StatsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-foreground">
+    <section ref={sectionRef} className="relative py-16 md:py-24 overflow-hidden">
+      <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+      <div className="absolute inset-0 bg-foreground/85" />
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
