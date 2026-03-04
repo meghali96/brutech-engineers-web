@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import resoluteLogo from '@/assets/clients/resolute.png';
 import mtarLogo from '@/assets/clients/mtar.jpg';
 import hblLogo from '@/assets/clients/hbl.png';
@@ -6,7 +7,6 @@ import tataLogo from '@/assets/clients/tata.jpg';
 import scclLogo from '@/assets/clients/sccl.jpg';
 import railwaysLogo from '@/assets/clients/indian-railways.png';
 import mahindraLogo from '@/assets/clients/mahindra.png';
-import { useScrollAnimation, animationClasses } from '@/hooks/useScrollAnimation';
 
 const clients = [
   { name: 'Resolute Group', logo: resoluteLogo },
@@ -20,15 +20,19 @@ const clients = [
 ];
 
 const ClientsCarousel = () => {
-  const header = useScrollAnimation();
-
   return (
     <section className="py-16 md:py-20 bg-muted overflow-hidden">
-      <div ref={header.ref} className={`container-custom mb-12 ${animationClasses(header.isVisible, 'fadeUp')}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ type: 'spring', stiffness: 80, damping: 16 }}
+        className="container-custom mb-12"
+      >
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
           Our <span className="text-primary">Clients</span>
         </h2>
-      </div>
+      </motion.div>
 
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
@@ -36,11 +40,16 @@ const ClientsCarousel = () => {
 
         <div className="flex animate-marquee hover:[animation-play-state:paused]">
           {[...clients, ...clients].map((client, index) => (
-            <div key={`client-${index}`} className="flex-shrink-0 mx-6">
-              <div className="w-52 h-28 bg-background rounded-lg shadow-sm flex items-center justify-center p-4 border border-border hover:border-primary transition-colors">
+            <motion.div
+              key={`client-${index}`}
+              whileHover={{ scale: 1.08, y: -4 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="flex-shrink-0 mx-6"
+            >
+              <div className="w-52 h-28 bg-background rounded-lg shadow-sm flex items-center justify-center p-4 border border-border hover:border-primary hover:shadow-md transition-all">
                 <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
