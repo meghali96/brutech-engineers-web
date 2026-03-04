@@ -21,7 +21,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative text-background">
+    <footer className="relative text-background border-t-4 border-primary">
       <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
       <div className="absolute inset-0 bg-foreground/90" />
 
