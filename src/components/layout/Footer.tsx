@@ -43,43 +43,48 @@ const Footer = () => {
               Get In Touch
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-background/80 text-sm">
-                  <p className="font-semibold text-background mb-1">Head Office:</p>
-                  <p>H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072</p>
+            <div className="grid grid-cols-2 gap-6">
+              {/* Offices */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-background/80 text-sm">
+                    <p className="font-semibold text-background mb-1">Head Office:</p>
+                    <p>H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072</p>
+                  </div>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-background/80 text-sm">
-                  <p className="font-semibold text-background mb-1">Branch Office:</p>
-                  <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-background/80 text-sm">
+                    <p className="font-semibold text-background mb-1">Branch Office:</p>
+                    <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
+                  </div>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-background/80 text-sm">
-                  <a href="tel:+917702949688" className="hover:text-primary transition-colors block">+91 7702949688</a>
-                  <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
-                  <a href="tel:+919381755470" className="hover:text-primary transition-colors block">+91 9381755470</a>
+              </div>
+              {/* Contact */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-background/80 text-sm">
+                    <a href="tel:+917702949688" className="hover:text-primary transition-colors block">+91 7702949688</a>
+                    <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
+                  </div>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
-                  sales@brutechengineers.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-background/80 text-sm">
-                  <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
-                  <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
+                    sales@brutechengineers.com
+                  </a>
                 </div>
-              </li>
-            </ul>
+                <div className="flex items-start gap-3">
+                  <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-background/80 text-sm">
+                    <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
+                    <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Column 3: Quick Links */}
