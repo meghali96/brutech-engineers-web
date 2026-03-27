@@ -54,8 +54,8 @@ const ServicesSection = () => {
               whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
               className="bg-card rounded-xl overflow-hidden shadow-card border-2 border-transparent group hover:border-primary/30 cursor-pointer"
             >
-              <div className="h-48 overflow-hidden">
-                <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              <div className="overflow-hidden">
+                <img src={service.image} alt={service.title} className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
