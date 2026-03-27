@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Globe, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Linkedin, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import logo from '@/assets/brutech-logo.png';
 import slide04 from '@/assets/slide-04.jpg';
 
@@ -14,6 +14,7 @@ const Footer = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const whatsappUrl = `https://wa.me/917702949688?text=${encodeURIComponent('Hello! I would like to inquire about your services.')}`;
 
   return (
     <footer className="relative text-background border-t-4 border-primary">
@@ -21,7 +22,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-foreground/90" />
 
       <div className="container-custom section-padding relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10">
           {/* Column 1: About */}
           <div>
             <Link to="/" className="inline-block mb-6 bg-background rounded-lg px-6 py-5">
@@ -31,9 +32,9 @@ const Footer = () => {
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.
             </p>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Twitter"><Twitter className="w-5 h-5" /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="YouTube"><Youtube className="w-5 h-5" /></a>
             </div>
           </div>
 
@@ -43,45 +44,32 @@ const Footer = () => {
               Get In Touch
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
             </h3>
-            <div className="grid grid-cols-2 gap-6">
-              {/* Offices */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div className="text-background/80 text-sm">
-                    <p className="font-semibold text-background mb-1">Head Office:</p>
-                    <p>H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div className="text-background/80 text-sm">
-                    <p className="font-semibold text-background mb-1">Branch Office:</p>
-                    <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
-                  </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <p className="font-semibold text-background mb-1">Head Office:</p>
+                  <p>H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072</p>
                 </div>
               </div>
-              {/* Contact */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div className="text-background/80 text-sm">
-                    <a href="tel:+917702949688" className="hover:text-primary transition-colors block">+91 7702949688</a>
-                    <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
-                  </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <p className="font-semibold text-background mb-1">Branch Office:</p>
+                  <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
-                    sales@brutechengineers.com
-                  </a>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div className="text-background/80 text-sm">
-                    <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
-                    <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
-                  </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
+                  sales@brutechengineers.com
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
+                  <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
                 </div>
               </div>
             </div>
@@ -103,6 +91,32 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Column 4: Contact Info */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 relative inline-block">
+              Contact Info
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <a href="tel:+917702949688" className="hover:text-primary transition-colors block">+91 7702949688</a>
+                  <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
+                </div>
+              </div>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-whatsapp text-primary-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:scale-105 transition-transform"
+              >
+                <MessageCircle className="w-5 h-5 fill-current" />
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
 
         </div>
