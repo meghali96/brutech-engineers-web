@@ -39,13 +39,13 @@ const navItemVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.1 + i * 0.05, type: 'spring', stiffness: 120, damping: 14 },
+    transition: { delay: 0.1 + i * 0.05, type: 'spring' as const, stiffness: 120, damping: 14 },
   }),
 };
 
 const dropdownVariants = {
   hidden: { opacity: 0, y: -8, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 200, damping: 20 } },
   exit: { opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.15 } },
 };
 
