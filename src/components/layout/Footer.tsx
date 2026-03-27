@@ -115,7 +115,7 @@ const Footer = () => {
       <div className="border-t border-background/10 relative z-10">
         <div className="container-custom py-6 text-center">
           <p className="text-background/60 text-sm">
-            © {currentYear} Copyright BruTech Engineers. All Rights Reserved
+            © {currentYear} Copyright <span className="text-primary">BruTech Engineers</span>. All Rights Reserved
           </p>
         </div>
       </div>
