@@ -17,8 +17,6 @@ import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
 import about4 from '@/assets/about-4.jpg';
-import about5 from '@/assets/about-5.jpg';
-import about6 from '@/assets/about-6.jpg';
 
 const galleryImages = [
   { src: slide01, title: 'Ingersoll Rand - Precision Power Tools', category: 'Products' },
