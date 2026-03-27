@@ -39,7 +39,7 @@ const AboutSection = () => {
                 key={index}
                 variants={imgItem}
                 whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300 } }}
-                className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted"
+                className="img-zoom rounded-lg overflow-hidden aspect-[4/3] border border-border bg-muted"
               >
                 <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
               </motion.div>
