@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-foreground/90" />
 
       <div className="container-custom section-padding relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10">
           {/* Column 1: About */}
           <div>
             <Link to="/" className="inline-block mb-6 bg-background rounded-lg px-6 py-5">
