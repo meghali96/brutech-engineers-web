@@ -109,7 +109,7 @@ const ContactPage = () => {
                 <div>
                   <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2"><MapPin className="w-5 h-5 text-primary" /> Branch Office — Visakapatnam</h3>
                   <div className="rounded-xl overflow-hidden shadow-card h-[280px]">
-                    <iframe src="https://maps.google.com/maps?q=Sabbavaram+Visakhapatnam+Andhra+Pradesh+531035&t=&z=14&ie=UTF8&iwloc=B&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Branch Office - Visakapatnam" />
+                    <iframe src="https://maps.google.com/maps?q=Sabbavaram+Visakhapatnam+Andhra+Pradesh+531035&t=&z=14&ie=UTF8&iwloc=B&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Branch Office - Visakapatnam"></iframe>
                   </div>
                 </div>
               </motion.div>
