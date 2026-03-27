@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import resoluteLogo from '@/assets/clients/resolute.png';
-import mtarLogo from '@/assets/clients/mtar.jpg';
-import hblLogo from '@/assets/clients/hbl.png';
-import ntpcLogo from '@/assets/clients/ntpc.png';
-import tataLogo from '@/assets/clients/tata.jpg';
-import scclLogo from '@/assets/clients/sccl.jpg';
-import railwaysLogo from '@/assets/clients/indian-railways.png';
-import mahindraLogo from '@/assets/clients/mahindra.png';
+import resoluteLogo from '@/assets/client-resolute.png';
+import mtarLogo from '@/assets/client-mtar.jpg';
+import hblLogo from '@/assets/client-hbl.png';
+import ntpcLogo from '@/assets/client-ntpc.png';
+import tataLogo from '@/assets/client-tata.jpg';
+import scclLogo from '@/assets/client-sccl.jpg';
+import railwaysLogo from '@/assets/client-railways.png';
+import mahindraLogo from '@/assets/client-mahindra.png';
 
 const clients = [
   { name: 'Resolute Group', logo: resoluteLogo },
