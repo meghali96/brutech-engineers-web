@@ -2,6 +2,7 @@ import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Factory, Car, Building2, Zap, Fuel, Plane, HardHat, UtensilsCrossed } from 'lucide-react';
 import { motion } from 'framer-motion';
