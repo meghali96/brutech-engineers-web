@@ -14,10 +14,6 @@ const Footer = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const blogPosts = [
-    { title: 'Pneumatic Lifting', date: 'Feb 28, 2025', path: '/blog/pneumatic-lifting' },
-    { title: 'Repairing Services', date: 'Feb 28, 2025', path: '/blog/repairing-services' },
-  ];
 
   return (
     <footer className="relative text-background border-t-4 border-primary">
