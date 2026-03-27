@@ -30,7 +30,7 @@ const Footer = () => {
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.
             </p>
             <div className="flex gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
+              <a href="https://www.linkedin.com/in/brutech-engineers-022000250/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="YouTube"><Youtube className="w-5 h-5" /></a>
             </div>
