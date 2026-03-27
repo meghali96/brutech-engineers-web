@@ -88,18 +88,6 @@ const ServicesPage = () => {
         </section>
 
         {services.map((service, index) => <ServiceBlock key={service.id} service={service} index={index} />)}
-
-        <section className="section-padding bg-foreground">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-background mb-6">Need a Custom Solution?</h2>
-            <p className="text-background/70 mb-8 max-w-2xl mx-auto">We specialize in configuring and tailoring solutions to our customers' needs.</p>
-            <Link to="/contact">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get in Touch</Button>
-              </motion.div>
-            </Link>
-          </motion.div>
-        </section>
       </Layout>
     </PageTransition>
   );
