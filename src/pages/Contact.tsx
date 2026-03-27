@@ -15,7 +15,7 @@ const contactInfo = [
   { icon: Clock, title: 'Business Hours', content: ['Monday - Saturday: 9:00 AM - 6:00 PM', 'Sunday: Closed'] },
 ];
 
-const serviceOptions = ['Assembly Solutions', 'Industry Lifting', 'Pneumatic Lifting', 'Repairing Services', 'Hydraulic Lifting', 'Material Handling', 'Other'];
+const serviceOptions = ['Assembly Solutions', 'Pneumatic Lifting', 'Railing Systems', 'Repairing Services', 'Heavy Torque Tools', 'Customized Material Handling', 'Other'];
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
 const card = { hidden: { opacity: 0, y: 30, scale: 0.95 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 100, damping: 14 } } };
