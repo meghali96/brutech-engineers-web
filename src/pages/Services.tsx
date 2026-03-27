@@ -3,23 +3,23 @@ import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Wrench, Container, Wind, Settings, Droplets, Truck, Check, ArrowRight } from 'lucide-react';
+import { Wrench, Wind, Train, Settings, Hammer, Truck, Check, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import slide03 from '@/assets/slide-03.jpg';
-import about1 from '@/assets/about-1.jpg';
+import serviceAssembly from '@/assets/service-assembly.jpg';
+import serviceRailing from '@/assets/service-railing.jpeg';
+import serviceRepairing from '@/assets/service-repairing.jpeg';
+import serviceHeavyTorque from '@/assets/service-heavy-torque.png';
+import serviceCustomized from '@/assets/service-customized.jpeg';
 import about2 from '@/assets/about-2.jpg';
-import about3 from '@/assets/about-3.jpg';
-import about4 from '@/assets/about-4.jpg';
-import about5 from '@/assets/about-5.jpg';
-import about6 from '@/assets/about-6.jpg';
 
 const services = [
-  { id: 'assembly', icon: Wrench, title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', image: about1, features: ['High-precision assembly equipment', 'Automated assembly lines', 'Quality control integration', 'Custom assembly solutions', 'Ergonomic workstation design'] },
-  { id: 'lifting', icon: Container, title: 'Industry Lifting', description: 'Heavy-duty lifting solutions for industrial and commercial sectors', image: about5, features: ['Overhead cranes and hoists', 'Chain hoists and trolleys', 'Lifting accessories and attachments', 'Load testing and certification', 'Installation and commissioning'] },
+  { id: 'assembly', icon: Wrench, title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', image: serviceAssembly, features: ['High-precision assembly equipment', 'Automated assembly lines', 'Quality control integration', 'Custom assembly solutions', 'Ergonomic workstation design'] },
   { id: 'pneumatic', icon: Wind, title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', image: about2, features: ['Pneumatic hoists and balancers', 'Air-powered manipulators', 'Vacuum lifting systems', 'Compressed air solutions', 'Energy-efficient designs'] },
-  { id: 'repair', icon: Settings, title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', image: about4, features: ['Preventive maintenance programs', 'Emergency repair services', 'Spare parts replacement', 'Calibration and testing', 'On-site and off-site repairs'] },
-  { id: 'hydraulic', icon: Droplets, title: 'Hydraulic Lifting', description: 'Powerful hydraulic lifting solutions for high-capacity operations', image: about3, features: ['Hydraulic jacks and cylinders', 'Hydraulic power packs', 'Custom hydraulic systems', 'High-tonnage lifting solutions', 'Precision hydraulic controls'] },
-  { id: 'material', icon: Truck, title: 'Customized Material Handling', description: 'Tailored material handling solutions to streamline logistics', image: about6, features: ['Conveyor systems', 'Automated guided vehicles', 'Palletizers and depalletizers', 'Custom handling equipment', 'Warehouse optimization'] },
+  { id: 'railing', icon: Train, title: 'Railing Systems', description: 'Industrial railing and overhead rail systems for streamlined workflows', image: serviceRailing, features: ['Overhead rail systems', 'Enclosed track rails', 'Bridge crane rail systems', 'Custom rail configurations', 'Installation and commissioning'] },
+  { id: 'repair', icon: Settings, title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', image: serviceRepairing, features: ['Preventive maintenance programs', 'Emergency repair services', 'Spare parts replacement', 'Calibration and testing', 'On-site and off-site repairs'] },
+  { id: 'torque', icon: Hammer, title: 'Heavy Torque Tools', description: 'High-performance torque tools for heavy-duty industrial applications', image: serviceHeavyTorque, features: ['Cordless torque wrenches', 'High-torque impact tools', 'Precision torque calibration', 'Industrial-grade durability', 'Multi-industry applications'] },
+  { id: 'material', icon: Truck, title: 'Customized Material Handling', description: 'Tailored material handling solutions to streamline logistics', image: serviceCustomized, features: ['Vacuum lifting systems', 'Custom handling equipment', 'Ergonomic material movers', 'Automated guided vehicles', 'Warehouse optimization'] },
 ];
 
 const featureContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
