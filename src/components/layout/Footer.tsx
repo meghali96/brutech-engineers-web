@@ -105,28 +105,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Our Blogs */}
-          <div>
-            <h3 className="text-xl font-bold mb-6 relative inline-block">
-              Our Blogs
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
-            </h3>
-            <ul className="space-y-4">
-              {blogPosts.map((post) => (
-                <li key={post.title}>
-                  <Link to={post.path} className="group flex gap-4">
-                    <div className="w-16 h-16 bg-primary/20 rounded-lg flex-shrink-0 flex items-center justify-center">
-                      <span className="text-primary font-bold text-xl">B</span>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold group-hover:text-primary transition-colors">{post.title}</h4>
-                      <p className="text-background/60 text-xs mt-1">{post.date}</p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 

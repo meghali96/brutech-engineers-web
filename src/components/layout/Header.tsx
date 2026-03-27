@@ -30,7 +30,7 @@ const navItems = [
   },
   { name: 'Our Clients', path: '/clients' },
   { name: 'Gallery', path: '/gallery' },
-  { name: 'Blog', path: '/blog' },
+  
   { name: 'Contact', path: '/contact' },
 ];
 

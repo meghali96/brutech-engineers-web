@@ -10,7 +10,7 @@ import slide01 from '@/assets/slide-01.jpg';
 const contactInfo = [
   { icon: MapPin, title: 'Head Office', content: 'H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072' },
   { icon: MapPin, title: 'Branch Office', content: '3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035' },
-  { icon: Phone, title: 'Phone', content: ['+91 7702949688', '+91 7702949690', '+91 9381755470'] },
+  { icon: Phone, title: 'Phone', content: ['+91 7702949688', '+91 7702949690'] },
   { icon: Mail, title: 'Email', content: 'sales@brutechengineers.com' },
   { icon: Clock, title: 'Business Hours', content: ['Monday - Saturday: 9:00 AM - 6:00 PM', 'Sunday: Closed'] },
 ];

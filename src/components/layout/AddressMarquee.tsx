@@ -16,10 +16,6 @@ const AddressMarquee = () => {
         Branch Office: 3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035
       </span>
       <span className="inline-flex items-center gap-2 text-sm font-medium">
-        <Phone className="w-4 h-4 flex-shrink-0" />
-        9381755470
-      </span>
-      <span className="inline-flex items-center gap-2 text-sm font-medium">
         <Mail className="w-4 h-4 flex-shrink-0" />
         sales@brutechengineers.com
       </span>
