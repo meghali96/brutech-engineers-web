@@ -82,7 +82,7 @@ const ClientsPage = () => {
             <div className="flex animate-marquee hover:[animation-play-state:paused]">
               {[...clients, ...clients].map((client, index) => (
                 <motion.div key={`client-${index}`} whileHover={{ scale: 1.08, y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }} className="flex-shrink-0 mx-6">
-                  <div className="w-64 h-36 bg-background rounded-lg shadow-sm flex items-center justify-center p-5 border border-border hover:border-primary hover:shadow-md transition-all">
+                  <div className="w-64 h-36 bg-background rounded-lg shadow-sm flex items-center justify-center p-2 border border-border hover:border-primary hover:shadow-md transition-all">
                     <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain" />
                   </div>
                 </motion.div>
