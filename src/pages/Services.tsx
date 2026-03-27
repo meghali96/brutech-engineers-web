@@ -78,6 +78,11 @@ const ServiceBlock = ({ service, index }: { service: typeof services[0]; index: 
 const ServicesPage = () => {
   return (
     <PageTransition>
+      <SEO
+        title="Our Services | Brutech Engineers - Industrial Solutions"
+        description="Explore Brutech Engineers' services: assembly solutions, pneumatic lifting, railing systems, repairing services, heavy torque tools & customized material handling."
+        keywords="assembly solutions, pneumatic lifting, railing systems, repairing services, heavy torque tools, material handling, industrial services India"
+      />
       <Layout>
         <PageBanner title="Services" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Services' }]} backgroundImage={slide03} />
 

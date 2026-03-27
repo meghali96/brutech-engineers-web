@@ -55,6 +55,11 @@ const GalleryPage = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Gallery | Brutech Engineers - Our Work & Facilities"
+        description="Browse Brutech Engineers' gallery showcasing our manufacturing facility, precision machine parts, industrial equipment and project installations."
+        keywords="Brutech gallery, manufacturing facility, machine parts photos, industrial equipment images, project installations"
+      />
       <Layout>
         <PageBanner title="Gallery" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Gallery' }]} backgroundImage={slide04} />
 

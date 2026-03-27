@@ -30,6 +30,11 @@ const card = { hidden: { opacity: 0, y: 40, scale: 0.95 }, visible: { opacity: 1
 const BlogPage = () => {
   return (
     <PageTransition>
+      <SEO
+        title="Blog | Brutech Engineers - Industry News & Insights"
+        description="Read the latest industry news, engineering insights and updates from Brutech Engineers. Stay informed about industrial solutions and manufacturing trends."
+        keywords="Brutech blog, industrial news, engineering insights, manufacturing trends, machine parts industry, industrial solutions blog"
+      />
       <Layout>
         <PageBanner title="Blog" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Blog' }]} backgroundImage={slide05} />
 

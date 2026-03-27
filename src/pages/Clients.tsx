@@ -62,6 +62,11 @@ const StatCounter = ({ stat, index }: { stat: typeof stats[0]; index: number }) 
 const ClientsPage = () => {
   return (
     <PageTransition>
+      <SEO
+        title="Our Clients | Brutech Engineers - Trusted by Leading Industries"
+        description="Brutech Engineers is trusted by NTPC, MTAR, Tata, Mahindra, Indian Railways & more. Serving 50+ industries across manufacturing, automotive, aerospace & energy."
+        keywords="Brutech clients, NTPC, MTAR Technologies, Tata, Mahindra, Indian Railways, industrial clients India, manufacturing partners"
+      />
       <Layout>
         <PageBanner title="Our Clients" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Our Clients' }]} backgroundImage={slide02} />
 
