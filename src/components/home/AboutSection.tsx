@@ -4,8 +4,8 @@ import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
 import about4 from '@/assets/about-4.jpg';
-import about5 from '@/assets/about-5.jpg';
-import about6 from '@/assets/about-6.jpg';
+import about5 from '@/assets/about-image.jpg';
+import about6 from '@/assets/about-img.jpg';
 
 const images = [about1, about2, about3, about4, about5, about6];
 
@@ -39,7 +39,7 @@ const AboutSection = () => {
                 key={index}
                 variants={imgItem}
                 whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 300 } }}
-                className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted"
+                className="img-zoom rounded-lg overflow-hidden aspect-[4/3] border border-border bg-muted"
               >
                 <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
               </motion.div>
