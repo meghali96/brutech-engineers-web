@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/brutech-logo.png';
 
@@ -159,11 +159,12 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Link to="/contact">
+            <a href="/brutech-brochure.pdf" download>
               <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-6">
-                Get Quote
+                <Download className="w-4 h-4 mr-2" />
+                Download Brochure
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -247,11 +248,12 @@ const Header = () => {
               </div>
             ))}
             <div className="pt-6">
-              <Link to="/contact" className="block">
+              <a href="/brutech-brochure.pdf" download className="block">
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
-                  Get Quote
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Brochure
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
