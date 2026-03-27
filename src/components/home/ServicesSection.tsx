@@ -1,14 +1,20 @@
 import { Link } from 'react-router-dom';
-import { Wrench, Container, Wind, Settings, Droplets, Truck, ArrowRight } from 'lucide-react';
+import { Wrench, Wind, Train, Settings, Hammer, Truck, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import serviceAssembly from '@/assets/service-assembly.jpg';
+import serviceRailing from '@/assets/service-railing.jpeg';
+import serviceRepairing from '@/assets/service-repairing.jpeg';
+import serviceHeavyTorque from '@/assets/service-heavy-torque.png';
+import serviceCustomized from '@/assets/service-customized.jpeg';
+import about2 from '@/assets/about-2.jpg';
 
 const services = [
-  { icon: Wrench, title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', link: '/services#assembly' },
-  { icon: Container, title: 'Industry Lifting', description: 'Heavy-duty lifting solutions for industrial and commercial sectors', link: '/services#lifting' },
-  { icon: Wind, title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', link: '/services#pneumatic' },
-  { icon: Settings, title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', link: '/services#repair' },
-  { icon: Droplets, title: 'Hydraulic Lifting', description: 'Powerful hydraulic lifting solutions for high-capacity operations', link: '/services#hydraulic' },
-  { icon: Truck, title: 'Customized Material Handling', description: 'Tailored material handling solutions to streamline logistics', link: '/services#material' },
+  { icon: Wrench, title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', link: '/services#assembly', image: serviceAssembly },
+  { icon: Wind, title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', link: '/services#pneumatic', image: about2 },
+  { icon: Train, title: 'Railing Systems', description: 'Industrial railing and overhead rail systems for streamlined workflows', link: '/services#railing', image: serviceRailing },
+  { icon: Settings, title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', link: '/services#repair', image: serviceRepairing },
+  { icon: Hammer, title: 'Heavy Torque Tools', description: 'High-performance torque tools for heavy-duty industrial applications', link: '/services#torque', image: serviceHeavyTorque },
+  { icon: Truck, title: 'Customized Material Handling', description: 'Tailored material handling solutions to streamline logistics', link: '/services#material', image: serviceCustomized },
 ];
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } } as const;
@@ -48,20 +54,25 @@ const ServicesSection = () => {
               key={index}
               variants={card}
               whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-              className="bg-card rounded-xl p-8 shadow-card border-2 border-transparent group hover:border-primary/30 cursor-pointer"
+              className="bg-card rounded-xl overflow-hidden shadow-card border-2 border-transparent group hover:border-primary/30 cursor-pointer"
             >
-              <motion.div
-                whileHover={{ rotate: 10, scale: 1.1 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="service-icon group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-              >
-                <service.icon className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-              <p className="text-muted-foreground mb-4">{service.description}</p>
-              <Link to={service.link} className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
-                Learn More <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="h-48 overflow-hidden">
+                <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div className="p-6">
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="service-icon group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                >
+                  <service.icon className="w-8 h-8" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                <p className="text-muted-foreground mb-4">{service.description}</p>
+                <Link to={service.link} className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </motion.div>
