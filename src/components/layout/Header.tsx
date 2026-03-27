@@ -159,7 +159,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <a href="/brutech-brochure.pdf" download>
+            <a href="/brutech-brochure.pdf" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-6">
                 <Download className="w-4 h-4 mr-2" />
                 Download Brochure
@@ -248,7 +248,7 @@ const Header = () => {
               </div>
             ))}
             <div className="pt-6">
-              <a href="/brutech-brochure.pdf" download className="block">
+              <a href="/brutech-brochure.pdf" target="_blank" rel="noopener noreferrer" className="block">
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
                   <Download className="w-4 h-4 mr-2" />
                   Download Brochure
