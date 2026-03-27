@@ -27,7 +27,7 @@ const features = [
 
 const stats = [
   { icon: Package, value: 10000, suffix: '+', label: 'Machine Parts Delivered' },
-  { icon: Building2, value: 25, suffix: '+', label: 'Industries Served' },
+  { icon: Building2, value: 50, suffix: '+', label: 'Industries Served' },
   { icon: Users, value: 20, suffix: '+', label: 'Skilled Engineers & Staff' },
 ];
 
