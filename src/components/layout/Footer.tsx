@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Globe, Linkedin, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Linkedin, Instagram, Youtube } from 'lucide-react';
 import logo from '@/assets/brutech-logo.png';
 import slide04 from '@/assets/slide-04.jpg';
 
@@ -13,8 +13,6 @@ const Footer = () => {
     { name: 'Our Clients', path: '/clients' },
     { name: 'Contact', path: '/contact' },
   ];
-
-  const whatsappUrl = `https://wa.me/917702949688?text=${encodeURIComponent('Hello! I would like to inquire about your services.')}`;
 
   return (
     <footer className="relative text-background border-t-4 border-primary">
@@ -59,19 +57,6 @@ const Footer = () => {
                   <p>3-23, Iruvada Village, Near Water Tank, Sabbavaram M, Visakapatnam, A.P - 531035</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
-                  sales@brutechengineers.com
-                </a>
-              </div>
-              <div className="flex items-start gap-3">
-                <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-background/80 text-sm">
-                  <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
-                  <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -107,15 +92,19 @@ const Footer = () => {
                   <a href="tel:+917702949690" className="hover:text-primary transition-colors block">+91 7702949690</a>
                 </div>
               </div>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-whatsapp text-primary-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:scale-105 transition-transform"
-              >
-                <MessageCircle className="w-5 h-5 fill-current" />
-                Chat on WhatsApp
-              </a>
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <a href="mailto:sales@brutechengineers.com" className="text-background/80 text-sm hover:text-primary transition-colors">
+                  sales@brutechengineers.com
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <Globe className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-background/80 text-sm">
+                  <a href="https://brutech.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutech.in</a>
+                  <a href="https://brutechengineers.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors block">brutechengineers.com</a>
+                </div>
+              </div>
             </div>
           </div>
 
