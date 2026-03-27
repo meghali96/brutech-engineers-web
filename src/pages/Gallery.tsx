@@ -15,8 +15,6 @@ import slide08 from '@/assets/slide-08.jpg';
 import slide09 from '@/assets/slide-09.jpg';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
-import about3 from '@/assets/about-3.jpg';
-import about4 from '@/assets/about-4.jpg';
 
 const galleryImages = [
   { src: slide01, title: 'Ingersoll Rand - Precision Power Tools', category: 'Products' },
@@ -30,8 +28,6 @@ const galleryImages = [
   { src: slide09, title: 'URYU - Fastening Tools', category: 'Products' },
   { src: about1, title: 'Brutech Workshop', category: 'Workshop' },
   { src: about2, title: 'Precision Equipment', category: 'Workshop' },
-  { src: about3, title: 'Manufacturing Facility', category: 'Workshop' },
-  { src: about4, title: 'Quality Components', category: 'Workshop' },
 ];
 
 const categories = ['All', 'Products', 'Workshop'];
