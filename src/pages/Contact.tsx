@@ -103,7 +103,7 @@ const ContactPage = () => {
                 <div>
                   <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2"><MapPin className="w-5 h-5 text-primary" /> Head Office — Hyderabad</h3>
                   <div className="rounded-xl overflow-hidden shadow-card h-[280px]">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.323151903544!2d78.42329927332035!3d17.478625100173947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91d5fc1e434b%3A0x55b0e414a70c0b4a!2sBrutech%20Engineers!5e1!3m2!1sen!2sin!4v1774579336358!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Head Office - Hyderabad" />
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1905.16!2d78.4233!3d17.4786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91d5fc1e434b%3A0x55b0e414a70c0b4a!2sBrutech%20Engineers!5e0!3m2!1sen!2sin!4v1774579336358!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Head Office - Hyderabad" />
                   </div>
                 </div>
                 <div>
