@@ -248,11 +248,12 @@ const Header = () => {
               </div>
             ))}
             <div className="pt-6">
-              <Link to="/contact" className="block">
+              <a href="/brutech-brochure.pdf" download className="block">
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
-                  Get Quote
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Brochure
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
