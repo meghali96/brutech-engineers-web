@@ -159,11 +159,12 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Link to="/contact">
+            <a href="/brutech-brochure.pdf" download>
               <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-6">
-                Get Quote
+                <Download className="w-4 h-4 mr-2" />
+                Download Brochure
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
