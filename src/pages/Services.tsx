@@ -9,7 +9,7 @@ import slide03 from '@/assets/slide-03.jpg';
 import serviceAssembly from '@/assets/service-assembly.jpg';
 import serviceRailing from '@/assets/service-railing.jpeg';
 import serviceRepairing from '@/assets/service-repairing.jpeg';
-import serviceHeavyTorque from '@/assets/service-heavy-torque.png';
+import serviceHeavyTorque from '@/assets/service-heavy-torque.jpg';
 import serviceCustomized from '@/assets/service-customized.jpeg';
 import about2 from '@/assets/about-2.jpg';
 
