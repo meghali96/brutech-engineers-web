@@ -32,8 +32,6 @@ const galleryImages = [
   { src: about2, title: 'Precision Equipment', category: 'Workshop' },
   { src: about3, title: 'Manufacturing Facility', category: 'Workshop' },
   { src: about4, title: 'Quality Components', category: 'Workshop' },
-  { src: about5, title: 'Industrial Parts', category: 'Workshop' },
-  { src: about6, title: 'Engineering Excellence', category: 'Workshop' },
 ];
 
 const categories = ['All', 'Products', 'Workshop'];
