@@ -11,7 +11,7 @@ const containerVariants = {
 
 const columnVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80, damping: 16 } },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 80, damping: 16 } },
 };
 
 const Footer = () => {
