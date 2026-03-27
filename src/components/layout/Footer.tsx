@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Globe, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { motion } from 'framer-motion';
 import logo from '@/assets/brutech-logo.png';
 import slide04 from '@/assets/slide-04.jpg';
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const columnVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80, damping: 16 } },
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,9 +31,15 @@ const Footer = () => {
       <div className="absolute inset-0 bg-foreground/90" />
 
       <div className="container-custom py-10 md:py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10"
+        >
           {/* Column 1: About */}
-          <div>
+          <motion.div variants={columnVariants}>
             <Link to="/" className="inline-block mb-6 bg-background rounded-lg px-6 py-5">
               <img src={logo} alt="Brutech Engineers" className="h-20 w-auto" />
             </Link>
@@ -30,17 +47,38 @@ const Footer = () => {
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com/in/brutech-engineers-022000250/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-5 h-5" /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="YouTube"><Youtube className="w-5 h-5" /></a>
+              {[
+                { href: 'https://www.linkedin.com/in/brutech-engineers-022000250/', icon: Linkedin, label: 'LinkedIn' },
+                { href: 'https://instagram.com', icon: Instagram, label: 'Instagram' },
+                { href: 'https://youtube.com', icon: Youtube, label: 'YouTube' },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2: Get In Touch */}
-          <div>
+          <motion.div variants={columnVariants}>
             <h3 className="text-xl font-bold mb-6 relative inline-block">
               Get In Touch
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary origin-left"
+              />
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
@@ -58,31 +96,49 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 3: Quick Links */}
-          <div>
+          <motion.div variants={columnVariants}>
             <h3 className="text-xl font-bold mb-6 relative inline-block">
               Quick Links
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary origin-left"
+              />
             </h3>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
+              {quickLinks.map((link, i) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.08 }}
+                >
                   <Link to={link.path} className="text-background/80 text-sm hover:text-primary transition-colors flex items-center gap-2 group">
                     <span className="w-0 h-0.5 bg-primary transition-all group-hover:w-3" />
                     {link.name}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 4: Contact Info */}
-          <div>
+          <motion.div variants={columnVariants}>
             <h3 className="text-xl font-bold mb-6 relative inline-block">
               Contact Info
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary" />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary origin-left"
+              />
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
@@ -106,19 +162,24 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-background/10 relative z-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5 }}
+        className="border-t border-background/10 relative z-10"
+      >
         <div className="container-custom py-6 text-center">
           <p className="text-background/60 text-sm">
             © {currentYear} Copyright <span className="text-primary">BruTech Engineers</span>. All Rights Reserved
           </p>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

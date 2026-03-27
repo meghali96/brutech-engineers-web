@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock, Download } from 'lucide-react';
+import { Menu, X, ChevronDown, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '@/assets/brutech-logo.png';
 
 const navItems = [
@@ -30,9 +31,23 @@ const navItems = [
   },
   { name: 'Our Clients', path: '/clients' },
   { name: 'Gallery', path: '/gallery' },
-  
   { name: 'Contact', path: '/contact' },
 ];
+
+const navItemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.1 + i * 0.05, type: 'spring', stiffness: 120, damping: 14 },
+  }),
+};
+
+const dropdownVariants = {
+  hidden: { opacity: 0, y: -8, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } },
+  exit: { opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.15 } },
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,9 +58,7 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -70,20 +83,34 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className={`fixed top-[30px] left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}>
-
-      {/* Main Header */}
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.1 }}
+      className={`fixed top-[30px] left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}
+    >
       <div className="container-custom py-1.5">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src={logo} alt="Brutech Engineers" className="h-12 md:h-16 w-auto" />
+            <motion.img
+              src={logo}
+              alt="Brutech Engineers"
+              className="h-12 md:h-16 w-auto"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
-            {navItems.map((item) => (
-              <div key={item.name} className="relative">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                custom={index}
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
+                className="relative"
+              >
                 {item.dropdown ? (
                   <button
                     className={`flex items-center gap-1 px-4 py-2 font-medium transition-colors hover:text-primary ${isActive(item.path) ? 'text-primary' : 'text-foreground'}`}
@@ -91,7 +118,9 @@ const Header = () => {
                     onMouseEnter={() => setActiveDropdown(item.name)}
                   >
                     {item.name}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    <motion.span animate={{ rotate: activeDropdown === item.name ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                      <ChevronDown className="w-4 h-4" />
+                    </motion.span>
                   </button>
                 ) : (
                   <Link
@@ -99,166 +128,237 @@ const Header = () => {
                     className={`px-4 py-2 font-medium transition-colors hover:text-primary relative ${isActive(item.path) ? 'text-primary' : 'text-foreground'}`}
                   >
                     {item.name}
-                    {isActive(item.path) && <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary" />}
+                    {isActive(item.path) && (
+                      <motion.span
+                        layoutId="activeNav"
+                        className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary"
+                        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                      />
+                    )}
                   </Link>
                 )}
 
-                {/* Dropdown Menu */}
-                {item.dropdown && activeDropdown === item.name && (
-                  <div
-                    className="absolute top-full left-0 mt-2 w-64 bg-background rounded-lg shadow-lg border border-border py-2 animate-fade-in z-50"
-                    onMouseLeave={() => {
-                      setActiveDropdown(null);
-                      setActiveSubmenu(null);
-                    }}
-                  >
-                    {item.dropdown.map((subItem) => (
-                      <div key={subItem.name} className="relative">
-                        {subItem.submenu ? (
-                          <button
-                            className="flex items-center justify-between w-full px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-                            onMouseEnter={() => setActiveSubmenu(subItem.name)}
-                          >
-                            {subItem.name}
-                            <ChevronDown className="w-4 h-4 -rotate-90" />
-                          </button>
-                        ) : (
-                          <a
-                            href={subItem.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-                          >
-                            {subItem.name}
-                          </a>
-                        )}
+                <AnimatePresence>
+                  {item.dropdown && activeDropdown === item.name && (
+                    <motion.div
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="absolute top-full left-0 mt-2 w-64 bg-background rounded-lg shadow-lg border border-border py-2 z-50"
+                      onMouseLeave={() => {
+                        setActiveDropdown(null);
+                        setActiveSubmenu(null);
+                      }}
+                    >
+                      {item.dropdown.map((subItem) => (
+                        <div key={subItem.name} className="relative">
+                          {subItem.submenu ? (
+                            <button
+                              className="flex items-center justify-between w-full px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                              onMouseEnter={() => setActiveSubmenu(subItem.name)}
+                            >
+                              {subItem.name}
+                              <ChevronDown className="w-4 h-4 -rotate-90" />
+                            </button>
+                          ) : (
+                            <a
+                              href={subItem.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                            >
+                              {subItem.name}
+                            </a>
+                          )}
 
-                        {/* Submenu */}
-                        {subItem.submenu && activeSubmenu === subItem.name && (
-                          <div className="absolute left-full top-0 w-64 bg-background rounded-lg shadow-lg border border-border py-2 ml-1">
-                            {subItem.submenu.map((subSubItem) => (
-                              <a
-                                key={subSubItem.name}
-                                href={subSubItem.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                          <AnimatePresence>
+                            {subItem.submenu && activeSubmenu === subItem.name && (
+                              <motion.div
+                                variants={dropdownVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                className="absolute left-full top-0 w-64 bg-background rounded-lg shadow-lg border border-border py-2 ml-1"
                               >
-                                {subSubItem.name}
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+                                {subItem.submenu.map((subSubItem) => (
+                                  <a
+                                    key={subSubItem.name}
+                                    href={subSubItem.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block px-4 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                                  >
+                                    {subSubItem.name}
+                                  </a>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
+            className="hidden lg:block"
+          >
             <a href="/brutech-brochure.pdf" download="Brutech-Brochure.pdf">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-6">
-                <Download className="w-4 h-4 mr-2" />
-                Download Brochure
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-6">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Brochure
+                </Button>
+              </motion.div>
             </a>
-          </div>
+          </motion.div>
 
-          {/* Mobile Menu Button */}
           <button
             className="lg:hidden p-2 text-primary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <AnimatePresence mode="wait">
+              {isMobileMenuOpen ? (
+                <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <X className="w-6 h-6" />
+                </motion.div>
+              ) : (
+                <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Menu className="w-6 h-6" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] bg-background z-40 animate-slide-in-right overflow-y-auto">
-          <div className="p-4">
-            {navItems.map((item) => (
-              <div key={item.name} className="border-b border-border">
-                {item.dropdown ? (
-                  <div>
-                    <button
-                      className="flex items-center justify-between w-full py-4 font-medium text-foreground"
-                      onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                    >
-                      {item.name}
-                      <ChevronDown className={`w-5 h-5 text-primary transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                    </button>
-                    {activeDropdown === item.name && (
-                      <div className="pl-4 pb-4 space-y-2 animate-fade-in">
-                        {item.dropdown.map((subItem) => (
-                          <div key={subItem.name}>
-                            {subItem.submenu ? (
-                              <div>
-                                <button
-                                  className="flex items-center justify-between w-full py-2 text-sm text-muted-foreground"
-                                  onClick={() => setActiveSubmenu(activeSubmenu === subItem.name ? null : subItem.name)}
-                                >
-                                  {subItem.name}
-                                  <ChevronDown className={`w-4 h-4 text-primary transition-transform ${activeSubmenu === subItem.name ? 'rotate-180' : ''}`} />
-                                </button>
-                                {activeSubmenu === subItem.name && (
-                                  <div className="pl-4 space-y-2 animate-fade-in">
-                                    {subItem.submenu.map((subSubItem) => (
-                                      <a
-                                        key={subSubItem.name}
-                                        href={subSubItem.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block py-2 text-sm text-muted-foreground hover:text-primary"
-                                      >
-                                        {subSubItem.name}
-                                      </a>
-                                    ))}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            className="lg:hidden fixed inset-0 top-[72px] bg-background z-40 overflow-y-auto"
+          >
+            <div className="p-4">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05, type: 'spring', stiffness: 120 }}
+                  className="border-b border-border"
+                >
+                  {item.dropdown ? (
+                    <div>
+                      <button
+                        className="flex items-center justify-between w-full py-4 font-medium text-foreground"
+                        onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                      >
+                        {item.name}
+                        <motion.span animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}>
+                          <ChevronDown className="w-5 h-5 text-primary" />
+                        </motion.span>
+                      </button>
+                      <AnimatePresence>
+                        {activeDropdown === item.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ type: 'spring', stiffness: 100, damping: 16 }}
+                            className="overflow-hidden pl-4 pb-4 space-y-2"
+                          >
+                            {item.dropdown.map((subItem) => (
+                              <div key={subItem.name}>
+                                {subItem.submenu ? (
+                                  <div>
+                                    <button
+                                      className="flex items-center justify-between w-full py-2 text-sm text-muted-foreground"
+                                      onClick={() => setActiveSubmenu(activeSubmenu === subItem.name ? null : subItem.name)}
+                                    >
+                                      {subItem.name}
+                                      <motion.span animate={{ rotate: activeSubmenu === subItem.name ? 180 : 0 }}>
+                                        <ChevronDown className="w-4 h-4 text-primary" />
+                                      </motion.span>
+                                    </button>
+                                    <AnimatePresence>
+                                      {activeSubmenu === subItem.name && (
+                                        <motion.div
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: 'auto', opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          className="overflow-hidden pl-4 space-y-2"
+                                        >
+                                          {subItem.submenu.map((subSubItem) => (
+                                            <a
+                                              key={subSubItem.name}
+                                              href={subSubItem.href}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="block py-2 text-sm text-muted-foreground hover:text-primary"
+                                            >
+                                              {subSubItem.name}
+                                            </a>
+                                          ))}
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
                                   </div>
+                                ) : (
+                                  <a
+                                    href={subItem.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block py-2 text-sm text-muted-foreground hover:text-primary"
+                                  >
+                                    {subItem.name}
+                                  </a>
                                 )}
                               </div>
-                            ) : (
-                              <a
-                                href={subItem.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block py-2 text-sm text-muted-foreground hover:text-primary"
-                              >
-                                {subItem.name}
-                              </a>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`block py-4 font-medium ${isActive(item.path) ? 'text-primary' : 'text-foreground'}`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-            <div className="pt-6">
-              <a href="/brutech-brochure.pdf" download="Brutech-Brochure.pdf" className="block">
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Brochure
-                </Button>
-              </a>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`block py-4 font-medium ${isActive(item.path) ? 'text-primary' : 'text-foreground'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="pt-6"
+              >
+                <a href="/brutech-brochure.pdf" download="Brutech-Brochure.pdf" className="block">
+                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-semibold">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Brochure
+                  </Button>
+                </a>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      )}
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
