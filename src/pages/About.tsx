@@ -68,7 +68,7 @@ const AboutPage = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="grid grid-cols-3 gap-3 md:gap-4">
                 {images.map((image, index) => (
-                  <motion.div key={index} variants={imgItem} whileHover={{ scale: 1.05 }} className="img-zoom rounded-lg overflow-hidden aspect-[4/3] border border-border bg-muted">
+                  <motion.div key={index} variants={imgItem} whileHover={{ scale: 1.05 }} className="img-zoom rounded-lg overflow-hidden aspect-square border border-border bg-muted">
                     <img src={image} alt={`About Brutech ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
                   </motion.div>
                 ))}
