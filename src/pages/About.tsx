@@ -13,6 +13,7 @@ import about5 from '@/assets/about-image.jpg';
 import about6 from '@/assets/about-img.jpg';
 import slide01 from '@/assets/slide-01.jpg';
 import { useCountUp } from '@/hooks/useCountUp';
+import SEO from '@/components/SEO';
 
 const images = [about1, about2, about3, about4, about5, about6];
 
@@ -59,6 +60,11 @@ const StatItem = ({ stat, index }: { stat: typeof stats[0]; index: number }) => 
 const AboutPage = () => {
   return (
     <PageTransition>
+      <SEO
+        title="About Us | Brutech Engineers - Our Story & Mission"
+        description="Learn about Brutech Engineers, founded in 2022. We deliver precision machine parts with unmatched quality, serving automotive, railways, pharmaceuticals & more."
+        keywords="about Brutech Engineers, company history, mission vision, industrial expertise, precision engineering, Hyderabad manufacturer"
+      />
       <Layout>
         <PageBanner title="About Us" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'About Us' }]} backgroundImage={slide01} />
 

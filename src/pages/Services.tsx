@@ -3,6 +3,7 @@ import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import SEO from '@/components/SEO';
 import { Wrench, Wind, Train, Settings, Hammer, Truck, Check, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import slide03 from '@/assets/slide-03.jpg';
@@ -77,6 +78,11 @@ const ServiceBlock = ({ service, index }: { service: typeof services[0]; index: 
 const ServicesPage = () => {
   return (
     <PageTransition>
+      <SEO
+        title="Our Services | Brutech Engineers - Industrial Solutions"
+        description="Explore Brutech Engineers' services: assembly solutions, pneumatic lifting, railing systems, repairing services, heavy torque tools & customized material handling."
+        keywords="assembly solutions, pneumatic lifting, railing systems, repairing services, heavy torque tools, material handling, industrial services India"
+      />
       <Layout>
         <PageBanner title="Services" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Services' }]} backgroundImage={slide03} />
 

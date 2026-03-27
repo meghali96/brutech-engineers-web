@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -41,6 +42,11 @@ const ContactPage = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Contact Us | Brutech Engineers - Get a Free Quote"
+        description="Contact Brutech Engineers for precision machine parts & industrial solutions. Located in Hyderabad & Vizag. Call, email or visit us for a free quote."
+        keywords="contact Brutech Engineers, get quote, Hyderabad industrial supplier, Vizag, machine parts inquiry, industrial equipment contact"
+      />
       <Layout>
         <PageBanner title="Contact" breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Contact' }]} backgroundImage={slide01} />
 
