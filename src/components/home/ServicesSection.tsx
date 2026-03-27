@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import serviceAssembly from '@/assets/service-assembly.jpg';
-import serviceRailing from '@/assets/service-railing.jpeg';
-import serviceRepairing from '@/assets/service-repairing.jpeg';
-import serviceHeavyTorque from '@/assets/service-heavy-torque.jpg';
-import serviceCustomized from '@/assets/service-customized.jpeg';
-import about2 from '@/assets/about-2.jpg';
+import serviceAssembly from '@/assets/service-assembly-new.png';
+import servicePneumatic from '@/assets/service-pneumatic-new.png';
+import serviceRailing from '@/assets/service-railing-new.png';
+import serviceRepairing from '@/assets/service-repairing-new.png';
+import serviceHeavyTorque from '@/assets/service-heavy-torque-new.png';
+import serviceCustomized from '@/assets/service-customized-new.png';
 
 const services = [
   { title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', image: serviceAssembly },
-  { title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', image: about2 },
+  { title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', image: servicePneumatic },
   { title: 'Railing Systems', description: 'Industrial railing and overhead rail systems for streamlined workflows', image: serviceRailing },
   { title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', image: serviceRepairing },
   { title: 'Heavy Torque Tools', description: 'High-performance torque tools for heavy-duty industrial applications', image: serviceHeavyTorque },
