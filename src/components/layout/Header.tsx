@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/brutech-logo.png';
 
