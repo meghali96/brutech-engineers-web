@@ -6,16 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Wrench, Wind, Train, Settings, Hammer, Truck, Check, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import slide03 from '@/assets/slide-03.jpg';
-import serviceAssembly from '@/assets/service-assembly.jpg';
-import serviceRailing from '@/assets/service-railing.jpeg';
-import serviceRepairing from '@/assets/service-repairing.jpeg';
-import serviceHeavyTorque from '@/assets/service-heavy-torque.jpg';
-import serviceCustomized from '@/assets/service-customized.jpeg';
-import about2 from '@/assets/about-2.jpg';
+import serviceAssembly from '@/assets/service-assembly-new.png';
+import servicePneumatic from '@/assets/service-pneumatic-new.png';
+import serviceRailing from '@/assets/service-railing-new.png';
+import serviceRepairing from '@/assets/service-repairing-new.png';
+import serviceHeavyTorque from '@/assets/service-heavy-torque-new.png';
+import serviceCustomized from '@/assets/service-customized-new.png';
 
 const services = [
   { id: 'assembly', icon: Wrench, title: 'Assembly Solutions', description: 'Expert assembly services ensuring precision and durability', image: serviceAssembly, features: ['High-precision assembly equipment', 'Automated assembly lines', 'Quality control integration', 'Custom assembly solutions', 'Ergonomic workstation design'] },
-  { id: 'pneumatic', icon: Wind, title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', image: about2, features: ['Pneumatic hoists and balancers', 'Air-powered manipulators', 'Vacuum lifting systems', 'Compressed air solutions', 'Energy-efficient designs'] },
+  { id: 'pneumatic', icon: Wind, title: 'Pneumatic Lifting', description: 'Air-powered lifting solutions for efficient and smooth operations', image: servicePneumatic, features: ['Pneumatic hoists and balancers', 'Air-powered manipulators', 'Vacuum lifting systems', 'Compressed air solutions', 'Energy-efficient designs'] },
   { id: 'railing', icon: Train, title: 'Railing Systems', description: 'Industrial railing and overhead rail systems for streamlined workflows', image: serviceRailing, features: ['Overhead rail systems', 'Enclosed track rails', 'Bridge crane rail systems', 'Custom rail configurations', 'Installation and commissioning'] },
   { id: 'repair', icon: Settings, title: 'Repairing Services', description: 'Comprehensive repair services for machinery and lifting systems', image: serviceRepairing, features: ['Preventive maintenance programs', 'Emergency repair services', 'Spare parts replacement', 'Calibration and testing', 'On-site and off-site repairs'] },
   { id: 'torque', icon: Hammer, title: 'Heavy Torque Tools', description: 'High-performance torque tools for heavy-duty industrial applications', image: serviceHeavyTorque, features: ['Cordless torque wrenches', 'High-torque impact tools', 'Precision torque calibration', 'Industrial-grade durability', 'Multi-industry applications'] },
