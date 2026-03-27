@@ -19,7 +19,7 @@ const Footer = () => {
       <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
       <div className="absolute inset-0 bg-foreground/90" />
 
-      <div className="container-custom section-padding relative z-10">
+      <div className="container-custom py-10 md:py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10">
           {/* Column 1: About */}
           <div>
