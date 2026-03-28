@@ -6,6 +6,7 @@ import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Factory, Car, Building2, Zap, Fuel, Plane, HardHat, UtensilsCrossed } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import slide02 from '@/assets/slide-02.jpg';
 import resoluteLogo from '@/assets/client-resolute.png';
 import mtarLogo from '@/assets/client-mtar.jpg';
