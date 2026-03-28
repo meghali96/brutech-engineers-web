@@ -82,7 +82,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ type: 'spring', stiffness: 60, damping: 16 }}>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">About <span className="text-primary">BruTech</span> Engineers</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6"><LetterReveal text="About BruTech Engineers" highlightWords={['BruTech']} /></h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.</p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">Brutech started as an assembly equipment and solution provider to Automotive OEMs. Today we serve leading automotive OEMs, their vendors and other industries including railways, white-goods, pharmaceuticals and food processing.</p>
 
