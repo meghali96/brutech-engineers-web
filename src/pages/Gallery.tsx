@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
 import SEO from '@/components/SEO';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { createPortal } from 'react-dom';
 import slide01 from '@/assets/slide-01.jpg';
 import slide02 from '@/assets/slide-02.jpg';
 import slide03 from '@/assets/slide-03.jpg';
@@ -47,11 +48,24 @@ const GalleryPage = () => {
   const goNext = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex + 1) % filteredImages.length); };
   const goPrev = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + filteredImages.length) % filteredImages.length); };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') goNext();
-    if (e.key === 'ArrowLeft') goPrev();
-  };
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null);
+      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % filteredImages.length));
+      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev === null ? prev : (prev - 1 + filteredImages.length) % filteredImages.length));
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [lightboxIndex, filteredImages.length]);
 
   return (
     <PageTransition>
@@ -102,31 +116,25 @@ const GalleryPage = () => {
         </section>
       </Layout>
 
-      <AnimatePresence>
-        {lightboxIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-foreground/95 flex items-center justify-center"
-            onClick={closeLightbox}
-            onKeyDown={handleKeyDown}
-            tabIndex={0}
-            role="dialog"
-            aria-label="Image lightbox"
-            style={{ top: 0, left: 0, width: '100vw', height: '100vh' }}
-          >
-            <button onClick={closeLightbox} className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-6 h-6" /></button>
-            <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Previous image"><ChevronLeft className="w-6 h-6" /></button>
-            <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Next image"><ChevronRight className="w-6 h-6" /></button>
-            <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: 'spring', stiffness: 200, damping: 20 }} className="max-w-5xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
-              <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" />
-              <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
-              <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {lightboxIndex !== null && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] bg-foreground/95 flex items-center justify-center"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image lightbox"
+        >
+          <button onClick={closeLightbox} className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-6 h-6" /></button>
+          <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Previous image"><ChevronLeft className="w-6 h-6" /></button>
+          <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Next image"><ChevronRight className="w-6 h-6" /></button>
+          <div className="max-w-5xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
+            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" />
+            <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
+            <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
+          </div>
+        </div>,
+        document.body
+      )}
     </PageTransition>
   );
 };
