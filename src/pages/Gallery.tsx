@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
@@ -39,23 +39,10 @@ const imgCard = { hidden: { opacity: 0, y: 30, scale: 0.9 }, visible: { opacity:
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const lightboxRef = useRef<HTMLDivElement>(null);
 
   const filteredImages = selectedCategory === 'All' ? galleryImages : galleryImages.filter(img => img.category === selectedCategory);
 
-  const openLightbox = (index: number) => {
-    setLightboxIndex(index);
-  };
-
-  // Scroll lightbox into view when it opens or changes
-  useEffect(() => {
-    if (lightboxIndex !== null && lightboxRef.current) {
-      setTimeout(() => {
-        lightboxRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 100);
-    }
-  }, [lightboxIndex]);
-
+  const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
   const goNext = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex + 1) % filteredImages.length); };
   const goPrev = () => { if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + filteredImages.length) % filteredImages.length); };
@@ -64,14 +51,6 @@ const GalleryPage = () => {
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') goNext();
     if (e.key === 'ArrowLeft') goPrev();
-  };
-
-  // Determine the row where the lightbox should appear (after the clicked image's row)
-  const getInsertIndex = () => {
-    if (lightboxIndex === null) return -1;
-    // Estimate columns: 3 on lg, 2 on sm, 1 on xs
-    // We'll insert after the full grid and show it there — simpler and consistent
-    return lightboxIndex;
   };
 
   return (
@@ -106,7 +85,7 @@ const GalleryPage = () => {
                   key={index}
                   variants={imgCard}
                   whileHover={{ scale: 1.03, y: -4 }}
-                  className={`group relative overflow-hidden rounded-xl border bg-muted cursor-pointer aspect-video ${lightboxIndex === index ? 'border-primary ring-2 ring-primary' : 'border-border'}`}
+                  className="group relative overflow-hidden rounded-xl border border-border bg-muted cursor-pointer aspect-video"
                   onClick={() => openLightbox(index)}
                 >
                   <img src={image.src} alt={image.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
@@ -119,52 +98,35 @@ const GalleryPage = () => {
                 </motion.div>
               ))}
             </motion.div>
-
-            {/* Inline lightbox - appears below the grid near the clicked image */}
-            <AnimatePresence>
-              {lightboxIndex !== null && (
-                <motion.div
-                  ref={lightboxRef}
-                  initial={{ opacity: 0, y: 30, scaleY: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                  exit={{ opacity: 0, y: 20, scaleY: 0.9 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-                  className="mt-6 relative rounded-2xl bg-foreground/95 p-4 md:p-8 origin-top"
-                  onKeyDown={handleKeyDown}
-                  tabIndex={0}
-                  role="dialog"
-                  aria-label="Image lightbox"
-                >
-                  <button onClick={closeLightbox} className="absolute top-3 right-3 w-10 h-10 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-5 h-5" /></button>
-
-                  <div className="flex items-center justify-center gap-4">
-                    <button onClick={goPrev} className="flex-shrink-0 w-10 h-10 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Previous image"><ChevronLeft className="w-5 h-5" /></button>
-
-                    <div className="flex-1 flex flex-col items-center max-w-4xl">
-                      <AnimatePresence mode="wait">
-                        <motion.img
-                          key={lightboxIndex}
-                          src={filteredImages[lightboxIndex].src}
-                          alt={filteredImages[lightboxIndex].title}
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="max-w-full max-h-[60vh] md:max-h-[70vh] object-contain rounded-lg"
-                        />
-                      </AnimatePresence>
-                      <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
-                      <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
-                    </div>
-
-                    <button onClick={goNext} className="flex-shrink-0 w-10 h-10 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Next image"><ChevronRight className="w-5 h-5" /></button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </section>
       </Layout>
+
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] bg-foreground/95 flex items-center justify-center"
+            onClick={closeLightbox}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+            role="dialog"
+            aria-label="Image lightbox"
+            style={{ top: 0, left: 0, width: '100vw', height: '100vh' }}
+          >
+            <button onClick={closeLightbox} className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-6 h-6" /></button>
+            <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Previous image"><ChevronLeft className="w-6 h-6" /></button>
+            <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Next image"><ChevronRight className="w-6 h-6" /></button>
+            <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: 'spring', stiffness: 200, damping: 20 }} className="max-w-5xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
+              <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" />
+              <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
+              <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   );
 };
