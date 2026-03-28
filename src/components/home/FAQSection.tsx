@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 
 const faqs = [
   { question: 'What types of machine parts does Brutech offer?', answer: 'We supply a wide range of standard and custom machine parts, including gears, shafts, couplings, and high-precision components for various industrial applications.' },
