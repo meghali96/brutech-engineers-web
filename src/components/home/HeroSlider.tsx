@@ -34,7 +34,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-auto min-h-[60vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
+      className="relative h-[50vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -46,7 +46,7 @@ const HeroSlider = () => {
           <img
             src={slide.image}
             alt={slide.heading}
-            className="absolute inset-0 w-full h-full object-contain md:object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
           />
@@ -54,10 +54,10 @@ const HeroSlider = () => {
 
           <div className="container-custom h-full flex items-center relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight hero-animated-text">
+              <h1 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 md:mb-4 leading-tight hero-animated-text">
                 {slide.heading}
               </h1>
-              <p className="text-xl md:text-2xl text-background/90 mb-8">
+              <p className="text-sm md:text-2xl text-background/90 mb-4 md:mb-8">
                 {slide.subheading}
               </p>
               <Link to={slide.buttonLink}>
