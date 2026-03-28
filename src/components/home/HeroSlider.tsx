@@ -34,7 +34,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-[85vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
+      className="relative h-auto min-h-[60vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -46,7 +46,7 @@ const HeroSlider = () => {
           <img
             src={slide.image}
             alt={slide.heading}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain md:object-cover"
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
           />
