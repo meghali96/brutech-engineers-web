@@ -73,7 +73,7 @@ const ClientsPage = () => {
 
         <section className="section-padding bg-background">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by <span className="text-primary">Leading Industries</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4"><LetterReveal text="Trusted by Leading Industries" highlightWords={['Leading', 'Industries']} /></h2>
             <p className="text-muted-foreground">Our components are trusted by clients across India in both heavy and light industries.</p>
           </motion.div>
         </section>
