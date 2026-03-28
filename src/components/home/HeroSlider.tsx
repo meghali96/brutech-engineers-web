@@ -54,10 +54,10 @@ const HeroSlider = () => {
 
           <div className="container-custom h-full flex items-center relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight hero-animated-text">
+              <h1 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 md:mb-4 leading-tight hero-animated-text">
                 {slide.heading}
               </h1>
-              <p className="text-xl md:text-2xl text-background/90 mb-8">
+              <p className="text-sm md:text-2xl text-background/90 mb-4 md:mb-8">
                 {slide.subheading}
               </p>
               <Link to={slide.buttonLink}>
