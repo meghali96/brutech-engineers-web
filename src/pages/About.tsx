@@ -117,7 +117,7 @@ const AboutPage = () => {
                 <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 300 }} className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Eye className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Vision</span></h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4"><LetterReveal text="Our Vision" highlightWords={['Vision']} /></h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">To be the most trusted and preferred industrial solutions partner across India, known for innovation, quality, and customer-first approach.</p>
                 <p className="text-muted-foreground leading-relaxed">With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base.</p>
               </motion.div>
