@@ -51,6 +51,17 @@ const GalleryPage = () => {
   useEffect(() => {
     if (lightboxIndex === null) return;
 
+    // Preload adjacent images for instant navigation
+    const preloadOffsets = [-1, 1, 2];
+    preloadOffsets.forEach((offset) => {
+      const idx = (lightboxIndex + offset + filteredImages.length) % filteredImages.length;
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = filteredImages[idx].src;
+      document.head.appendChild(link);
+    });
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setLightboxIndex(null);
       if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % filteredImages.length));
@@ -127,8 +138,14 @@ const GalleryPage = () => {
           <button onClick={closeLightbox} className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Close lightbox"><X className="w-6 h-6" /></button>
           <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Previous image"><ChevronLeft className="w-6 h-6" /></button>
           <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background/10 text-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-50" aria-label="Next image"><ChevronRight className="w-6 h-6" /></button>
-          <div className="max-w-5xl max-h-[85vh] px-4" onClick={(e) => e.stopPropagation()}>
-            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" />
+          <div className="max-w-5xl max-h-[85vh] px-4 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            {/* Preload all filtered images as hidden to keep them in memory */}
+            <div className="hidden">
+              {filteredImages.map((img, i) => (
+                <img key={i} src={img.src} alt="" />
+              ))}
+            </div>
+            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" decoding="async" />
             <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
             <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
           </div>
