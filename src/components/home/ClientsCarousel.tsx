@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import resoluteLogo from '@/assets/client-resolute.png';
 import mtarLogo from '@/assets/client-mtar.jpg';
 import hblLogo from '@/assets/client-hbl.png';
