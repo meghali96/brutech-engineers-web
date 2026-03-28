@@ -53,7 +53,7 @@ const AboutSection = () => {
             transition={{ type: 'spring', stiffness: 60, damping: 16 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              About <span className="text-primary">BruTech</span> Engineers
+              <LetterReveal text="About BruTech Engineers" highlightWords={['BruTech']} />
             </h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.
