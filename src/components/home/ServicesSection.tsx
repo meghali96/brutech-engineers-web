@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import serviceAssembly from '@/assets/service-assembly-new.png';
 import servicePneumatic from '@/assets/service-pneumatic-new.png';
 import serviceRailing from '@/assets/service-railing-new.png';
