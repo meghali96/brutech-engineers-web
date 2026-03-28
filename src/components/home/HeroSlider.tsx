@@ -34,7 +34,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-auto min-h-[60vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
+      className="relative h-[50vh] md:h-[90vh] lg:h-[95vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
