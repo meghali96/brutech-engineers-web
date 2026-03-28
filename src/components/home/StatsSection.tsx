@@ -52,7 +52,7 @@ const StatsSection = () => {
           className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-background mb-4">
-            Setting the Standards in <span className="text-primary">Industrial Excellence</span>
+            <LetterReveal text="Setting the Standards in Industrial Excellence" highlightWords={['Industrial', 'Excellence']} />
           </h2>
           <p className="text-background/70">
             With deep-rooted engineering expertise and reliable product delivery, Brutech powers machines and industries across India.

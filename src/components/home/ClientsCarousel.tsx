@@ -31,7 +31,7 @@ const ClientsCarousel = () => {
         className="container-custom mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
-          Our <span className="text-primary">Clients</span>
+          <LetterReveal text="Our Clients" highlightWords={['Clients']} />
         </h2>
       </motion.div>
 

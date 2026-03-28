@@ -131,7 +131,7 @@ const ClientsPage = () => {
         {/* CTA */}
         <section className="section-padding bg-muted">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6"><LetterReveal text="Ready to Work with Us?" /></h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Join the growing list of satisfied clients who trust Brutech.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact"><motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get Quote</Button></motion.div></Link>
