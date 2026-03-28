@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
 import { Wrench, Wind, Train, Settings, Hammer, Truck, Check, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import slide03 from '@/assets/slide-03.jpg';
 import serviceAssembly from '@/assets/service-assembly-new.png';
 import servicePneumatic from '@/assets/service-pneumatic-new.png';
