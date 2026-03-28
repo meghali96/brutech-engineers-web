@@ -41,7 +41,7 @@ const industries = [
 ];
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Industries Served' },
+  { value: 150, suffix: '+', label: 'Industries Served' },
   { value: 100, suffix: '+', label: 'Satisfied Clients' },
   { value: 10000, suffix: '+', label: 'Parts Delivered' },
 ];
