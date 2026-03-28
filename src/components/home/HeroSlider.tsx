@@ -46,7 +46,7 @@ const HeroSlider = () => {
           <img
             src={slide.image}
             alt={slide.heading}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain md:object-cover"
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
           />
