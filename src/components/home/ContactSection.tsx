@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
