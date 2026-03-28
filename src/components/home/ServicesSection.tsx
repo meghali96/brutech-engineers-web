@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import serviceAssembly from '@/assets/service-assembly-new.png';
 import servicePneumatic from '@/assets/service-pneumatic-new.png';
 import serviceRailing from '@/assets/service-railing-new.png';
@@ -33,7 +34,7 @@ const ServicesSection = () => {
           className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our <span className="text-primary">Services</span>
+            <LetterReveal text="Our Services" highlightWords={['Services']} />
           </h2>
           <p className="text-muted-foreground">
             Discover our wide range of industrial solutions designed to lift, assemble, repair, and handle your materials with precision and efficiency.

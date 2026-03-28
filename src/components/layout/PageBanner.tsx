@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import WordReveal from '@/components/animations/WordReveal';
+import LetterReveal from '@/components/animations/LetterReveal';
 
 interface PageBannerProps {
   title: string;
@@ -46,7 +46,7 @@ const PageBanner = ({ title, breadcrumbs, backgroundImage }: PageBannerProps) =>
 
       <div className="container-custom relative z-10 text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-background mb-4">
-          <WordReveal text={title} />
+          <LetterReveal text={title} />
         </h1>
         <motion.div
           initial={{ scaleX: 0 }}

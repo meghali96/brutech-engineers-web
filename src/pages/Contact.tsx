@@ -6,6 +6,7 @@ import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import slide01 from '@/assets/slide-01.jpg';
 
 const contactInfo = [
@@ -52,7 +53,7 @@ const ContactPage = () => {
 
         <section className="section-padding bg-background">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Get in Touch <span className="text-primary">With Us</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4"><LetterReveal text="Get in Touch With Us" highlightWords={['With', 'Us']} /></h2>
             <p className="text-muted-foreground">Have questions or need a custom solution? Reach out to the Brutech team — we're here to help you.</p>
           </motion.div>
         </section>

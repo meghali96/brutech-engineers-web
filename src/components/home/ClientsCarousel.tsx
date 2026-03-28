@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import resoluteLogo from '@/assets/client-resolute.png';
 import mtarLogo from '@/assets/client-mtar.jpg';
 import hblLogo from '@/assets/client-hbl.png';
@@ -30,7 +31,7 @@ const ClientsCarousel = () => {
         className="container-custom mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
-          Our <span className="text-primary">Clients</span>
+          <LetterReveal text="Our Clients" highlightWords={['Clients']} />
         </h2>
       </motion.div>
 

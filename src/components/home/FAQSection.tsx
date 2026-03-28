@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 
 const faqs = [
   { question: 'What types of machine parts does Brutech offer?', answer: 'We supply a wide range of standard and custom machine parts, including gears, shafts, couplings, and high-precision components for various industrial applications.' },
@@ -28,7 +29,7 @@ const FAQSection = () => {
           className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Frequently Asked <span className="text-primary">Questions</span>
+            <LetterReveal text="Frequently Asked Questions" highlightWords={['Questions']} />
           </h2>
           <p className="text-muted-foreground">Answers to common questions about our products, services, and support at Brutech.</p>
         </motion.div>

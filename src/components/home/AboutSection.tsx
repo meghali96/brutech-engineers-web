@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
@@ -53,7 +54,7 @@ const AboutSection = () => {
             transition={{ type: 'spring', stiffness: 60, damping: 16 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              About <span className="text-primary">BruTech</span> Engineers
+              <LetterReveal text="About BruTech Engineers" highlightWords={['BruTech']} />
             </h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.

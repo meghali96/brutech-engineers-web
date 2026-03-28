@@ -6,6 +6,7 @@ import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Factory, Car, Building2, Zap, Fuel, Plane, HardHat, UtensilsCrossed } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import slide02 from '@/assets/slide-02.jpg';
 import resoluteLogo from '@/assets/client-resolute.png';
 import mtarLogo from '@/assets/client-mtar.jpg';
@@ -72,7 +73,7 @@ const ClientsPage = () => {
 
         <section className="section-padding bg-background">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by <span className="text-primary">Leading Industries</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4"><LetterReveal text="Trusted by Leading Industries" highlightWords={['Leading', 'Industries']} /></h2>
             <p className="text-muted-foreground">Our components are trusted by clients across India in both heavy and light industries.</p>
           </motion.div>
         </section>
@@ -80,7 +81,7 @@ const ClientsPage = () => {
         {/* Brands Carousel */}
         <section className="py-16 bg-muted overflow-hidden">
           <div className="container-custom mb-8">
-            <h3 className="text-2xl font-bold text-foreground text-center mb-8">Our Clients</h3>
+            <h3 className="text-2xl font-bold text-foreground text-center mb-8"><LetterReveal text="Our Clients" highlightWords={['Clients']} /></h3>
           </div>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
@@ -101,7 +102,7 @@ const ClientsPage = () => {
         <section className="section-padding bg-background">
           <div className="container-custom">
             <motion.h3 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
-              Industries <span className="text-primary">We Serve</span>
+              <LetterReveal text="Industries We Serve" highlightWords={['We', 'Serve']} />
             </motion.h3>
             <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {industries.map((industry, index) => (
@@ -130,7 +131,7 @@ const ClientsPage = () => {
         {/* CTA */}
         <section className="section-padding bg-muted">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6"><LetterReveal text="Ready to Work with Us?" /></h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Join the growing list of satisfied clients who trust Brutech.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact"><motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">Get Quote</Button></motion.div></Link>

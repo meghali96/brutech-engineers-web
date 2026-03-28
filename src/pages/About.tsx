@@ -5,6 +5,7 @@ import { Check, Package, Building2, Users, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
@@ -81,7 +82,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ type: 'spring', stiffness: 60, damping: 16 }}>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">About <span className="text-primary">BruTech</span> Engineers</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6"><LetterReveal text="About BruTech Engineers" highlightWords={['BruTech']} /></h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">Founded in 2022, Brutech has quickly earned the trust of manufacturers by consistently delivering precision parts with unmatched quality and service.</p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">Brutech started as an assembly equipment and solution provider to Automotive OEMs. Today we serve leading automotive OEMs, their vendors and other industries including railways, white-goods, pharmaceuticals and food processing.</p>
 
@@ -107,7 +108,7 @@ const AboutPage = () => {
                 <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 300 }} className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Target className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Mission</span></h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4"><LetterReveal text="Our Mission" highlightWords={['Mission']} /></h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">To substantially improve the productivity of our customers by enhancing efficiency, ergonomics, accuracy and speed in their manufacturing process.</p>
                 <p className="text-muted-foreground leading-relaxed">To help our customers to safeguard the safety and health of their employees and to assist them in being environment friendly and green companies.</p>
               </motion.div>
@@ -116,7 +117,7 @@ const AboutPage = () => {
                 <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ type: 'spring', stiffness: 300 }} className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Eye className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our <span className="text-primary">Vision</span></h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4"><LetterReveal text="Our Vision" highlightWords={['Vision']} /></h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">To be the most trusted and preferred industrial solutions partner across India, known for innovation, quality, and customer-first approach.</p>
                 <p className="text-muted-foreground leading-relaxed">With two sales and service locations in Hyderabad and Vizag, we have grown over the years both in terms of our product offerings as well as in our customer base.</p>
               </motion.div>
@@ -138,7 +139,7 @@ const AboutPage = () => {
         {/* CTA */}
         <section className="section-padding bg-background">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: '-60px' }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Work with Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6"><LetterReveal text="Ready to Work with Us?" /></h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Let's discuss how Brutech can help improve your manufacturing processes with our precision-crafted components.</p>
             <Link to="/contact">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
