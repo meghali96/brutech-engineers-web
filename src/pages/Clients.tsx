@@ -102,7 +102,7 @@ const ClientsPage = () => {
         <section className="section-padding bg-background">
           <div className="container-custom">
             <motion.h3 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 16 }} className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
-              Industries <span className="text-primary">We Serve</span>
+              <LetterReveal text="Industries We Serve" highlightWords={['We', 'Serve']} />
             </motion.h3>
             <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {industries.map((industry, index) => (
