@@ -5,6 +5,7 @@ import { Check, Package, Building2, Users, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import about1 from '@/assets/about-1.jpg';
 import about2 from '@/assets/about-2.jpg';
 import about3 from '@/assets/about-3.jpg';
