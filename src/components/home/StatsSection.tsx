@@ -1,5 +1,6 @@
 import { Package, Building2, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LetterReveal from '@/components/animations/LetterReveal';
 import slide04 from '@/assets/slide-04.jpg';
 import { useCountUp } from '@/hooks/useCountUp';
 
