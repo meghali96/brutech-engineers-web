@@ -81,7 +81,7 @@ const ClientsPage = () => {
         {/* Brands Carousel */}
         <section className="py-16 bg-muted overflow-hidden">
           <div className="container-custom mb-8">
-            <h3 className="text-2xl font-bold text-foreground text-center mb-8">Our Clients</h3>
+            <h3 className="text-2xl font-bold text-foreground text-center mb-8"><LetterReveal text="Our Clients" highlightWords={['Clients']} /></h3>
           </div>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-muted to-transparent z-10" />
