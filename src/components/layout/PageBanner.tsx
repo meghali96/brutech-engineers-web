@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import WordReveal from '@/components/animations/WordReveal';
+import LetterReveal from '@/components/animations/LetterReveal';
 
 interface PageBannerProps {
   title: string;
