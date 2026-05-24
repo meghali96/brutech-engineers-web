@@ -48,7 +48,7 @@ const ClientsCarousel = () => {
               className="flex-shrink-0 mx-6"
             >
               <div className="w-64 h-36 bg-background rounded-lg shadow-sm flex items-center justify-center p-2 border border-border hover:border-primary hover:shadow-md transition-all">
-                <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain" />
+                <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain"  loading="lazy" decoding="async"/>
               </div>
             </motion.div>
           ))}

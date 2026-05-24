@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <footer className="relative text-background border-t-4 border-primary">
-      <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+      <img src={slide04} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true"  loading="lazy" decoding="async"/>
       <div className="absolute inset-0 bg-foreground/90" />
 
       <div className="container-custom py-10 md:py-12 relative z-10">
@@ -41,7 +41,7 @@ const Footer = () => {
           {/* Column 1: About */}
           <motion.div variants={columnVariants}>
             <Link to="/" className="inline-block mb-6 bg-background rounded-lg px-6 py-5">
-              <img src={logo} alt="Brutech Engineers" className="h-20 w-auto" />
+              <img src={logo} alt="Brutech Engineers" className="h-20 w-auto"  loading="lazy" decoding="async"/>
             </Link>
             <p className="text-background/80 mb-6 text-sm leading-relaxed">
               Brutech, founded in 2022, delivers reliable, high-quality machine parts for industrial needs. We offer standard and custom solutions focused on precision and performance.

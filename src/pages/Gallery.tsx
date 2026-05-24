@@ -142,10 +142,10 @@ const GalleryPage = () => {
             {/* Preload all filtered images as hidden to keep them in memory */}
             <div className="hidden">
               {filteredImages.map((img, i) => (
-                <img key={i} src={img.src} alt="" />
+                <img key={i} src={img.src} alt=""  loading="lazy" decoding="async"/>
               ))}
             </div>
-            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" decoding="async" />
+            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" decoding="async"  loading="lazy" decoding="async"/>
             <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
             <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
           </div>

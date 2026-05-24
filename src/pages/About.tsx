@@ -127,7 +127,7 @@ const AboutPage = () => {
 
         {/* Stats */}
         <section className="relative py-16 md:py-24 overflow-hidden">
-          <img src={slide01} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+          <img src={slide01} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true"  loading="lazy" decoding="async"/>
           <div className="absolute inset-0 bg-foreground/85" />
           <div className="container-custom relative z-10">
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
