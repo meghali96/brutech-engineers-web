@@ -145,7 +145,7 @@ const GalleryPage = () => {
                 <img key={i} src={img.src} alt=""  loading="lazy" decoding="async"/>
               ))}
             </div>
-            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" decoding="async"  loading="lazy" decoding="async"/>
+            <img src={filteredImages[lightboxIndex].src} alt={filteredImages[lightboxIndex].title} className="max-w-full max-h-[80vh] object-contain rounded-lg" decoding="async" loading="lazy"/>
             <p className="text-center text-background mt-4 font-semibold">{filteredImages[lightboxIndex].title}</p>
             <p className="text-center text-primary text-sm mt-1">{lightboxIndex + 1} / {filteredImages.length}</p>
           </div>
