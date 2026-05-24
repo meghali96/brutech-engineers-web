@@ -87,7 +87,7 @@ const Header = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.1 }}
-      className={`fixed top-[30px] left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-lg' : 'bg-background/95'}`}
+      className={`fixed left-0 right-0 z-[70] transition-all duration-300 ${isScrolled ? 'top-0 bg-background shadow-lg' : 'top-[30px] bg-background/95'}`}
     >
       <div className="container-custom py-1.5">
         <div className="flex items-center justify-between">
