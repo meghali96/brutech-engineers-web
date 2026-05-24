@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
 import PageBanner from '@/components/layout/PageBanner';
@@ -8,6 +8,8 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import LetterReveal from '@/components/animations/LetterReveal';
 import slide01 from '@/assets/slide-01.jpg';
+import emailjs from '@emailjs/browser';
+import { toast } from '@/components/ui/use-toast';
 
 const contactInfo = [
   { icon: MapPin, title: 'Head Office', content: 'H.NO. 5-36/191, Prashanthi Nagar, Kukatpally, Hyderabad, T.G - 500072' },
@@ -26,6 +28,7 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', service: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [debug, setDebug] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,13 +36,54 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // basic client-side validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast({ title: 'Missing fields', description: 'Please fill Name, Email and Message.' });
+      return;
+    }
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '' });
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setDebug('starting send...');
+    toast({ title: 'Sending...', description: 'Sending your message now.' });
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      service: formData.service,
+      message: formData.message,
+    } as Record<string, string>;
+
+    try {
+      console.log('EmailJS: sending', templateParams);
+      setDebug('sending request...');
+      const res = await emailjs.send('service_k9ikk2t', 'template_le54ar8', templateParams, 'LmKrIH7AAVtIm_X2z');
+      console.log('EmailJS send result:', res);
+      setDebug(`sent: ${res.status} ${res.text}`);
+      setIsSubmitted(true);
+      toast({ title: 'Message sent', description: 'Your message has been sent successfully.' });
+      setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (err) {
+      console.error('EmailJS send error:', err);
+      setDebug(`error: ${(err && (err as any).text) || (err && (err as any).message) || JSON.stringify(err)}`);
+      // try to extract a readable message
+      const errMsg = (err && (err as any).text) || (err && (err as any).message) || JSON.stringify(err);
+      toast({ title: 'Send failed', description: `Error sending message: ${errMsg}` });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  useEffect(() => {
+    // initialize EmailJS with public key for some environments
+    try {
+      emailjs.init('LmKrIH7AAVtIm_X2z');
+      console.log('EmailJS initialized');
+    } catch (e) {
+      console.warn('EmailJS init warning', e);
+    }
+  }, []);
 
   return (
     <PageTransition>
@@ -85,6 +129,11 @@ const ContactPage = () => {
                   </motion.div>
                 )}
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {debug && (
+                    <div className="p-3 mb-2 text-sm rounded border border-border bg-muted text-foreground">
+                      <strong>Status:</strong> {debug}
+                    </div>
+                  )}
                   <div className="grid md:grid-cols-2 gap-4">
                     <input type="text" name="name" placeholder="Your Name *" required value={formData.name} onChange={handleChange} className="form-input" />
                     <input type="email" name="email" placeholder="Your Email *" required value={formData.email} onChange={handleChange} className="form-input" />
