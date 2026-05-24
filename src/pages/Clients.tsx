@@ -90,7 +90,7 @@ const ClientsPage = () => {
               {[...clients, ...clients].map((client, index) => (
                 <motion.div key={`client-${index}`} whileHover={{ scale: 1.08, y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }} className="flex-shrink-0 mx-6">
                   <div className="w-64 h-36 bg-background rounded-lg shadow-sm flex items-center justify-center p-2 border border-border hover:border-primary hover:shadow-md transition-all">
-                    <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain" />
+                    <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain"  loading="lazy" decoding="async"/>
                   </div>
                 </motion.div>
               ))}
@@ -119,7 +119,7 @@ const ClientsPage = () => {
 
         {/* Stats */}
         <section className="relative py-16 md:py-24 overflow-hidden">
-          <img src={slide02} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+          <img src={slide02} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true"  loading="lazy" decoding="async"/>
           <div className="absolute inset-0 bg-foreground/85" />
           <div className="container-custom relative z-10">
             <div className="grid md:grid-cols-3 gap-8">

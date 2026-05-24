@@ -90,7 +90,7 @@ const BlogPage = () => {
                     {blogPosts.slice(0, 3).map((post) => (
                       <li key={post.id}>
                         <Link to={`/blog/${post.id}`} className="flex gap-3 group">
-                          <img src={post.image} alt={post.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
+                          <img src={post.image} alt={post.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0"  loading="lazy" decoding="async"/>
                           <div>
                             <h4 className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors line-clamp-2">{post.title}</h4>
                             <p className="text-xs text-muted-foreground mt-1">{post.date}</p>
